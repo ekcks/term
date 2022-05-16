@@ -15,13 +15,7 @@ spring:
     password: sksms331
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 1089873847707-fmli8704l4fr0cdv042qda8jmpd8ogu0.apps.googleusercontent.com
-            client-secret: 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
+
 
   session:
     store-type: jdbc
