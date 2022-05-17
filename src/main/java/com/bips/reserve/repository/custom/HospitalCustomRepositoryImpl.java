@@ -26,7 +26,7 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository{
     @Override
     public List<HospitalListDto> findAllHospitalInfo(Long id) {
         return em.createQuery(
-                "select new com.threefam.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
+                "select new com.bips.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
                         "from Hospital h " +
                         "where h.admin.id = :id"
                 , HospitalListDto.class).setParameter("id",id).getResultList();
@@ -51,7 +51,7 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository{
     @Override
     public List<HospitalListDto> findHospitalListPaging(int offset, int limit) {
         return em.createQuery(
-                        "select new com.threefam.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
+                        "select new com.bips.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
                                 "from Hospital h " +
                                 "where h.enabled = true", HospitalListDto.class)
                 .setFirstResult(offset)
@@ -65,7 +65,7 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository{
     @Override
     public List<HospitalListDto> findHospitalListByAddressPaging(int offset, int limit, @Param("address") String address) {
         return em.createQuery(
-                        "select new com.threefam.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
+                        "select new com.bips.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
                                 "from Hospital h " +
                                 "where h.enabled = true and h.address like '%'||:address||'%'", HospitalListDto.class)
                 .setParameter("address", address)
@@ -80,7 +80,7 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository{
     @Override
     public List<HospitalListDto> findHospitalListByAddressAndAdmin(@Param("address") String address, Long adminId) {
         return em.createQuery(
-                        "select new com.threefam.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
+                        "select new com.bips.reserve.dto.hospital.HospitalListDto(h.id, h.hospitalName, h.address, h.totalQuantity) " +
                                 "from Hospital h " +
                                 "where h.admin.id= :adminId and h.address like '%'||:address||'%'", HospitalListDto.class)
                 .setParameter("address", address)

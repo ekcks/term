@@ -17,6 +17,9 @@ spring:
 
 
 
+
+
+
   session:
     store-type: jdbc
     # spring.session.jdbc.initialize-schema: always 설정이 있어야만

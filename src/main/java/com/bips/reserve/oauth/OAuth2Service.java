@@ -26,7 +26,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User oAuth2User=super.loadUser(userRequest);
-        OAuth2UserInfo oAuth2UserInfo=null;
+        OAuth2UserInfo oAuth2UserInfo = null;
 
         if(userRequest.getClientRegistration().getRegistrationId().equals("google")){
             oAuth2UserInfo=new GoogleUserInfo(oAuth2User.getAttributes());
@@ -40,7 +40,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
 
         User buildUser = User.createUser()
                 .email(oAuth2UserInfo.getEmail())
-                .password(bCryptPasswordEncoder.encode("bips"))
+                .password(bCryptPasswordEncoder.encode("threeFam"))
                 .name(oAuth2UserInfo.getName())
                 .role(Role.ROLE_USER)
                 .build();
