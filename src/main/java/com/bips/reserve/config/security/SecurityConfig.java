@@ -3,6 +3,7 @@ package com.bips.reserve.config.security;
 import com.bips.reserve.service.user.UserService;
 import com.bips.reserve.oauth.OAuth2Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -51,7 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+        auth.inMemoryAuthentication()
+                .withUser("admin").password("{noop}123").roles("ADMIN");
     }
-
 
 }

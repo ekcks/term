@@ -1,19 +1,19 @@
 package com.bips.reserve;
 
 import com.bips.reserve.domain.entity.*;
-        import com.bips.reserve.domain.value.Gender;
-        import com.bips.reserve.domain.value.Role;
-        import com.bips.reserve.dto.Vaccine.VaccineDto;
-        import com.bips.reserve.repository.AdminRepository;
-        import com.bips.reserve.repository.HospitalRepository;
-        import com.bips.reserve.service.user.UserService;
-        import lombok.RequiredArgsConstructor;
-        import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-        import org.springframework.stereotype.Component;
+import com.bips.reserve.domain.value.Gender;
+import com.bips.reserve.domain.value.Role;
+import com.bips.reserve.dto.Vaccine.VaccineDto;
+import com.bips.reserve.repository.AdminRepository;
+import com.bips.reserve.repository.HospitalRepository;
+import com.bips.reserve.service.user.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
-        import javax.annotation.PostConstruct;
-        import java.util.ArrayList;
-        import java.util.List;
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 초기 admin 데이터 저장 클래스, DI(의존 관계) 주입 후 바로 실행 될 메서드 정의
@@ -21,13 +21,13 @@ import com.bips.reserve.domain.entity.*;
 @Component
 @RequiredArgsConstructor
 public class AdminInit {
-
     private final UserService userService;
     private final AdminRepository adminRepository;
     private final HospitalRepository hospitalRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    //@PostConstruct
+
+    @PostConstruct
     public void init(){
         User user = User.createUser()
                 .email("admin")
