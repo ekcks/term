@@ -12,9 +12,9 @@ public class ReserveItemSimpleDto {
 
     private Long reserveItemId;
 
-    private String hospitalName;
+    private String brestName;
 
-    private String vaccineName;
+    private String btableName;
 
     private String reserveDate;
 

@@ -1,24 +1,24 @@
 package com.bips.reserve.controller;
 
-import com.bips.reserve.dto.hospital.*;
-        import com.bips.reserve.dto.reserve.ReserveItemWithUsernameDto;
-        import com.bips.reserve.dto.security.PrincipalDetails;
-        import com.bips.reserve.service.admin.AdminService;
-        import lombok.RequiredArgsConstructor;
-        import lombok.extern.slf4j.Slf4j;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.security.core.Authentication;
-        import org.springframework.security.core.annotation.AuthenticationPrincipal;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.validation.BindingResult;
-        import org.springframework.validation.annotation.Validated;
-        import org.springframework.web.bind.annotation.*;
+import com.bips.reserve.dto.brest.*;
+import com.bips.reserve.dto.reserve.ReserveItemWithUsernameDto;
+import com.bips.reserve.dto.security.PrincipalDetails;
+import com.bips.reserve.service.admin.AdminService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-        import javax.servlet.http.HttpServletRequest;
-        import java.text.ParseException;
-        import java.util.List;
-        import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -31,48 +31,48 @@ public class AdminController {
     /**
      * 병원 이름으로 병원 단건 조회
      */
-    @GetMapping("/hospital")
+    @GetMapping("/brest")
     @ResponseBody
-    public ResponseEntity<HospitalResponseDto> getHospital(@RequestParam("name") String hospitalName) {
-        HospitalResponseDto hospitalResponseDto = adminService.getHospitalInfo(hospitalName);
+    public ResponseEntity<BrestResponseDto> getBRest(@RequestParam("name") String brestName) {
+        BrestResponseDto brestResponseDto = adminService.getBrestInfo(brestName);
 
-        return ResponseEntity.ok(hospitalResponseDto);
+        return ResponseEntity.ok(brestResponseDto);
     }
 
     /**
      * 병원 등록 폼 랜더링
      */
-    @GetMapping("/hospital/add")
-    public String hospitalForm(Model model){
-        model.addAttribute("hospitalRequestDto",new HospitalRequestDto());
-        return "admin/hospitalRegister";
+    @GetMapping("/brest/add")
+    public String brestForm(Model model){
+        model.addAttribute("brestRequestDto",new BrestRequestDto());
+        return "admin/brestRegister";
     }
 
     /**
      * 현재 어드민이 관리하는 병원 목록 조회 (병원이름, 주소만 조회)
      */
     @ResponseBody
-    @GetMapping("/hospitals")
-    public List<HospitalSimpleInfoDto> asd(Authentication authentication) {
+    @GetMapping("/brests")
+    public List<BrestSimpleInfoDto> asd(Authentication authentication) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-       List<HospitalSimpleInfoDto> hospitals = adminService.getAllSimpleHospitalInfo(principal.getName());
-       return hospitals;
+        List<BrestSimpleInfoDto> brests = adminService.getAllSimpleBrestInfo(principal.getName());
+        return brests;
     }
 
     /**
      * 병원 등록
      * @param authentication 등록되는 병원애 admin을 추가해주기 위해 현재 인증 객체를 사용
      */
-    @PostMapping("/hospital/add")
-    public String addHospital(
+    @PostMapping("/brest/add")
+    public String addBRest(
             Authentication authentication,
-            @Validated @ModelAttribute HospitalRequestDto form, BindingResult result, HttpServletRequest request) throws Exception{
+            @Validated @ModelAttribute BrestRequestDto form, BindingResult result, HttpServletRequest request) throws Exception{
 
         if(result.hasErrors()){
-            return "admin/hospitalRegister";
+            return "admin/brestRegister";
         }
 
-        makeVaccineInfoMap(form.getAstrazeneka(), form.getJanssen(), form.getFizar(), form.getModena(), form.getVaccineInfoMap());
+        makeBTableInfoMap(form.getA(), form.getB(), form.getC(), form.getD(), form.getBtableInfoMap());
 
         timeParse(form);
         /**
@@ -80,87 +80,86 @@ public class AdminController {
          * 따라서 병원 등록시 Authentication에서 얻어온 유저 정보를 그대로 사용 (병원에 Admin을 넣어주기 위함)
          */
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-      log.info("principal.name = {}", principal.getName());
+        log.info("principal.name = {}", principal.getName());
 
-       adminService.addHospital(form, principal.getName());
+        adminService.addBrest(form, principal.getName());
 
-        return "redirect:/admin/hospital/list";
+        return "redirect:/admin/brest/list";
     }
 
     /**
      * 병원 목록
      */
-    @GetMapping("/hospital/list")
-    public String hospitalList(@AuthenticationPrincipal PrincipalDetails principal, Model model,
+    @GetMapping("/brest/list")
+    public String brestList(@AuthenticationPrincipal PrincipalDetails principal, Model model,
                                @RequestParam(defaultValue = "noSearch")String addressSearch) {
-       String adminName = principal.getName();
-        List<HospitalListDto> hospitalList = adminService.getHospitalList(adminName,addressSearch);
-       model.addAttribute("hospitalList", hospitalList);
-        return "admin/hospitalList";
+        String adminName = principal.getName();
+        List<BrestListDto> brestList = adminService.getBrestList(adminName,addressSearch);
+        model.addAttribute("brestList", brestList);
+        return "admin/brestList";
     }
 
     /**
      * 병원 상세정보 조회
      */
-    @GetMapping("/hospital/{hospitalId}")
-    public String hospitalInfo(Model model,@PathVariable("hospitalId")Long id){
+    @GetMapping("/brest/{brestId}")
+    public String brestInfo(Model model,@PathVariable("brestId")Long id){
 
-        HospitalUpdateDto hospitalUpdateDto = adminService.getHospital(id);
-        model.addAttribute("hospitalUpdateDto",hospitalUpdateDto);
+        BrestUpdateDto brestUpdateDto = adminService.getBrest(id);
+        model.addAttribute("brestUpdateDto",brestUpdateDto);
 
-        return "admin/hospitalDetail";
+        return "admin/brestDetail";
     }
 
     /**
      * 병원 수정
      */
-    @PostMapping("/hospital/" +
-            "edit/{hospitalId}")
-    public String hospitalEdit(@PathVariable Long hospitalId,
-                               @Validated @ModelAttribute HospitalUpdateDto hospitalUpdateDto,BindingResult result)
+    @PostMapping("/brest/" + "edit/{brestId}")
+    public String brestEdit(@PathVariable Long brestId,
+                               @Validated @ModelAttribute BrestUpdateDto brestUpdateDto,BindingResult result)
             throws ParseException {
         if(result.hasErrors()){
-            return "admin/hospitalDetail";
+            return "admin/brestDetail";
         }
-        hospitalUpdateDto.setId(hospitalId);
-        makeVaccineInfoMap(hospitalUpdateDto.getAstrazeneka(), hospitalUpdateDto.getJanssen(),
-                hospitalUpdateDto.getFizar(), hospitalUpdateDto.getModena(), hospitalUpdateDto.getVaccineInfoMap());
-        adminService.hospitalUpdate(hospitalUpdateDto);
+        brestUpdateDto.setId(brestId);
+        makeBTableInfoMap(brestUpdateDto.getA(), brestUpdateDto.getB(),
+                brestUpdateDto.getC(), brestUpdateDto.getD(), brestUpdateDto.getBtableInfoMap());
+        adminService.brestUpdate(brestUpdateDto);
 
-        return "redirect:/admin/hospital/list";
+        return "redirect:/admin/brest/list";
     }
 
     /**
      * 예약 현황 조회
      */
-    @GetMapping("/hospital/reserves/{hospitalId}")
-    public String reserveCondition(@PathVariable Long hospitalId, Model model){
-        List<ReserveItemWithUsernameDto> reserveItemConditions = adminService.getReserveItemCondition(hospitalId);
+    @GetMapping("/brest/reserves/{brestId}")
+    public String reserveCondition(@PathVariable Long brestId, Model model){
+        List<ReserveItemWithUsernameDto> reserveItemConditions = adminService.getReserveItemCondition(brestId);
 
         model.addAttribute("reserveItemConditions",reserveItemConditions);
         return "admin/reserveCondition";
     }
 
     // 시간을 parseInt 되도록 만드는 메서드
-    private void timeParse(HospitalRequestDto form) {
+    private void timeParse(BrestRequestDto form) {
         form.setStartTime(form.getStartTime().split(":")[0]);
         form.setEndTime(form.getEndTime().split(":")[0]);
     }
 
-    // vaccineInfoMap만드는 메서드
-    private void makeVaccineInfoMap(Integer astrazeneka, Integer janssen, Integer fizar, Integer modena, Map<String,Integer> vaccineInfoMap) {
+    // btableInfoMap만드는 메서드
+    private void makeBTableInfoMap(Integer A, Integer B, Integer C, Integer D, Map<String,Integer> btableInfoMap) {
 
-        if(astrazeneka !=null && astrazeneka !=0){
-            vaccineInfoMap.put("아스트라제네카", astrazeneka);
+        if(A !=null && A !=0){
+            btableInfoMap.put("A", A);
         }
-        if(janssen !=null && janssen !=0){
-            vaccineInfoMap.put("얀센", janssen);
+        if(B !=null && B !=0){
+            btableInfoMap.put("B", B);
         }
-        if(fizar !=null && fizar !=0){
-            vaccineInfoMap.put("화이자", fizar);
+        if(C !=null && C !=0){
+            btableInfoMap.put("C", C);
         }
-        if(modena !=null && modena !=0){
-            vaccineInfoMap.put("모더나", modena);
+        if(D !=null && D !=0){
+            btableInfoMap.put("D", D);
         }
     }
 

@@ -3,9 +3,8 @@ package com.bips.reserve;
 import com.bips.reserve.domain.entity.*;
 import com.bips.reserve.domain.value.Gender;
 import com.bips.reserve.domain.value.Role;
-import com.bips.reserve.dto.Vaccine.VaccineDto;
 import com.bips.reserve.repository.AdminRepository;
-import com.bips.reserve.repository.HospitalRepository;
+import com.bips.reserve.repository.BrestRepository;
 import com.bips.reserve.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,11 +22,11 @@ import java.util.List;
 public class AdminInit {
     private final UserService userService;
     private final AdminRepository adminRepository;
-    private final HospitalRepository hospitalRepository;
+    private final BrestRepository brestRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    @PostConstruct
+    //@PostConstruct
     public void init(){
         User user = User.createUser()
                 .email("admin")
@@ -46,36 +45,36 @@ public class AdminInit {
                 .build();
         adminRepository.save(admin);
 
-        Hospital hospital = Hospital.createHospital()
-                .hospitalName("HospitalA")
+        Brest brest = Brest.createBRest()
+                .brestName("BrestA")
                 .address("서울특별시 강서구")
                 .detailAddress("A빌딩")
                 .dateAccept(100)
                 .timeAccept(10)
                 .build();
-        hospital.setAdmin(admin);
+        brest.setAdmin(admin);
 
-        Vaccine astrazeneka = Vaccine.createVaccine()
-                .vaccineName("아스트라제네카")
+        Btable A = Btable.createBTable()
+                .btableName("A")
                 .quantity(50)
                 .build();
-        Vaccine janssen = Vaccine.createVaccine()
-                .vaccineName("얀센")
+        Btable B = Btable.createBTable()
+                .btableName("B")
                 .quantity(20)
                 .build();
-        Vaccine modena = Vaccine.createVaccine()
-                .vaccineName("모더나")
+        Btable C = Btable.createBTable()
+                .btableName("C")
                 .quantity(40)
                 .build();
-        Vaccine fizar = Vaccine.createVaccine()
-                .vaccineName("화이자")
+       Btable D = Btable.createBTable()
+                .btableName("D")
                 .quantity(10)
                 .build();
 
-        astrazeneka.addHospital(hospital);
-        janssen.addHospital(hospital);
-        modena.addHospital(hospital);
-        fizar.addHospital(hospital);
+        A.addBrest(brest);
+        B.addBrest(brest);
+        C.addBrest(brest);
+        D.addBrest(brest);
 
         List<String> dateList=new ArrayList<>();
         dateList.add("2021.1.1");
@@ -101,10 +100,10 @@ public class AdminInit {
                         .build();
                 availableTime.addAvailableDate(availableDate);
             }
-            availableDate.addHospital(hospital);
+            availableDate.addBrest(brest);
         }
-        hospital.setTotalVaccineQuantity(120);
+        brest.setTotalBtableQuantity(120);
 
-        hospitalRepository.save(hospital);
+        brestRepository.save(brest);
     }
 }

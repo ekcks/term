@@ -14,9 +14,9 @@ public class ReserveItemWithUsernameDto {
 
     private String username;
 
-    private String hospitalName;
+    private String brestName;
 
-    private String vaccineName;
+    private String btableName;
 
     private String reserveDate;
 
@@ -27,8 +27,8 @@ public class ReserveItemWithUsernameDto {
     public ReserveItemWithUsernameDto(ReserveItem reserveItem){
         this.reserveItemId = reserveItem.getId();
         this.username = reserveItem.getUser().getName();
-        this.hospitalName = reserveItem.getHospital().getHospitalName();
-        this.vaccineName = reserveItem.getVaccineName();
+        this.brestName = reserveItem.getBrest().getBrestName();
+        this.btableName = reserveItem.getBtableName();
         this.reserveDate = reserveItem.getReserveDate();
         this.reserveTime = reserveItem.getReserveTime();
         this.reserveStatus = reserveItem.getStatus();

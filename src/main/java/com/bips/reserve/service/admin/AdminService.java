@@ -1,46 +1,44 @@
 package com.bips.reserve.service.admin;
 
 
-import com.bips.reserve.domain.entity.Hospital;
-        import com.bips.reserve.dto.hospital.*;
+import com.bips.reserve.dto.brest.*;
         import com.bips.reserve.dto.reserve.ReserveItemWithUsernameDto;
 
         import java.text.ParseException;
         import java.util.List;
-        import java.util.Optional;
 
 public interface AdminService {
 
     /**
-     * 병원등록
+     * 레스토랑등록
      */
-    Long addHospital(HospitalRequestDto hospitalAddDto,String adminName) throws Exception;
+    Long addBrest(BrestRequestDto brestAddDto,String adminName) throws Exception;
 
 
     /**
-     * 병원이름으로 병원 단건 조회
+     * 래스토랑 이름으로 레스토랑 단건 조회
      */
-    HospitalResponseDto getHospitalInfo(String hospitalName);
+    BrestResponseDto getBrestInfo(String brestName);
 
     /**
-     * 어드민이 관리하는 병원 리스트를 보여주기 위한 메서드
+     * 어드민이 관리하는 레스토랑 리스트를 보여주기 위한 메서드
      */
-    List<HospitalSimpleInfoDto> getAllSimpleHospitalInfo(String name);
+    List<BrestSimpleInfoDto> getAllSimpleBrestInfo(String name);
 
-    List<HospitalListDto> getHospitalList(String name,String address);
-
-    /**
-     * 병원 상세 정보 조회 후 dto로 변환
-     */
-    HospitalUpdateDto getHospital(Long id);
+    List<BrestListDto> getBrestList(String name,String address);
 
     /**
-     * 병원 update
+     * 레스토랑 상세 정보 조회 후 dto로 변환
      */
-    Long hospitalUpdate(HospitalUpdateDto dto) throws ParseException;
+    BrestUpdateDto getBrest(Long id);
+
+    /**
+     * 레스토랑 update
+     */
+    Long brestUpdate(BrestUpdateDto dto) throws ParseException;
 
     /**
      * 예약 현황 정보
      */
-    List<ReserveItemWithUsernameDto> getReserveItemCondition(Long hospitalId);
+    List<ReserveItemWithUsernameDto> getReserveItemCondition(Long brestId);
 }

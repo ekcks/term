@@ -25,8 +25,8 @@ public class AvailableDate {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hospital_id")
-    private Hospital hospital;
+    @JoinColumn(name = "brest_id")
+    private Brest brest;
 
     @Column(nullable = false)
     private String date;
@@ -65,9 +65,9 @@ public class AvailableDate {
     }
 
     // 양방향 연관관계 편의 메서드
-    public void addHospital(Hospital hospital) {
-        this.hospital = hospital;
-        hospital.getAvailableDates().add(this);
+    public void addBrest(Brest brest) {
+        this.brest = brest;
+        brest.getAvailableDates().add(this);
     }
 
     @Builder(builderMethodName = "createAvailableDate")

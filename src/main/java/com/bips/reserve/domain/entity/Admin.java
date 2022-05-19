@@ -1,14 +1,14 @@
 package com.bips.reserve.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-        import javax.persistence.*;
-        import java.util.ArrayList;
-        import java.util.List;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -23,7 +23,7 @@ public class Admin extends BaseEntity {
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"admin"})
-    private List<Hospital> hospitals = new ArrayList<>();
+    private List<Brest> brests = new ArrayList<>();
 
     @Builder(builderMethodName = "createAdmin")
     public Admin(String name) {

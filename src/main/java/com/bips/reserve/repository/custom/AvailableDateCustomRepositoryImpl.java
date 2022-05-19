@@ -14,13 +14,13 @@ public class AvailableDateCustomRepositoryImpl implements AvailableDateCustomRep
     private final EntityManager em;
 
     @Override
-    public AvailableDate findAvailableDateByHospitalIdAndDate(Long hospitalId, String date) {
+    public AvailableDate findAvailableDateByBrestIdAndDate(Long brestId, String date) {
         return em.createQuery(
                         "select d " +
                                 "from AvailableDate d " +
-                                "where d.hospital.id = :hospitalId and d.date = :date", AvailableDate.class
+                                "where d.brest.id = :brestId and d.date = :date", AvailableDate.class
                 )
-                .setParameter("hospitalId", hospitalId)
+                .setParameter("brestId", brestId)
                 .setParameter("date", date)
                 .getSingleResult();
 

@@ -10,7 +10,7 @@ import com.bips.reserve.domain.entity.ReserveItem;
 
 public interface ReserveItemRepository extends JpaRepository<ReserveItem, Long>, ReserveItemCustomRepository {
 
-    @Query("select new com.bips.reserve.dto.reserve.ReserveItemSimpleDto(ri.id, ri.Hospital.hospitalName, ri.vaccineName, ri.reserveDate, ri.reserveTime, ri.status) " +
+    @Query("select new com.bips.reserve.dto.reserve.ReserveItemSimpleDto(ri.id, ri.Brest.brestName, ri.btableName, ri.reserveDate, ri.reserveTime, ri.status) " +
             "from ReserveItem  ri " +
             "where ri.user.id = :userId")
     Optional<ReserveItemSimpleDto> findByUserId(Long userId);

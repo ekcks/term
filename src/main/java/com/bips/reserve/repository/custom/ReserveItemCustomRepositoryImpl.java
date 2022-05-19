@@ -1,14 +1,14 @@
 package com.bips.reserve.repository.custom;
 
+import com.bips.reserve.domain.entity.Btable;
 import com.bips.reserve.domain.entity.AvailableDate;
-        import com.bips.reserve.domain.entity.AvailableTime;
-        import com.bips.reserve.domain.entity.ReserveItem;
-        import com.bips.reserve.domain.entity.Vaccine;
-        import lombok.RequiredArgsConstructor;
-        import org.springframework.stereotype.Repository;
+import com.bips.reserve.domain.entity.AvailableTime;
+import com.bips.reserve.domain.entity.ReserveItem;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
-        import javax.persistence.EntityManager;
-        import java.util.List;
+import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -17,11 +17,11 @@ public class ReserveItemCustomRepositoryImpl implements ReserveItemCustomReposit
     private final EntityManager em;
 
     @Override
-    public List<AvailableDate> findAvailableDatesByHospitalId(Long id) {
+    public List<AvailableDate> findAvailableDatesByBrestId(Long id) {
         return em.createQuery(
                         "select d " +
                                 "from AvailableDate d " +
-                                "where d.hospital.id = :id and d.enabled = true", AvailableDate.class
+                                "where d.brest.id = :id and d.enabled = true", AvailableDate.class
                 )
                 .setParameter("id", id)
                 .getResultList();
@@ -39,25 +39,25 @@ public class ReserveItemCustomRepositoryImpl implements ReserveItemCustomReposit
     }
 
     @Override
-    public List<Vaccine> findAvailableVaccines(Long hospitalId) {
+    public List<Btable> findAvailableBtables(Long brestId) {
         return em.createQuery(
                         "select v " +
-                                "from Vaccine v " +
-                                "where v.hospital.id = :hospitalId and v.quantity > 0 and v.enabled = true", Vaccine.class
+                                "from Btable v " +
+                                "where v.brest.id = :brestId and v.quantity > 0 and v.enabled = true", Btable.class
                 )
-                .setParameter("hospitalId", hospitalId)
+                .setParameter("brestId", brestId)
                 .getResultList();
     }
 
     @Override
-    public List<ReserveItem> findAllReserveItem(Long hospitalId){
+    public List<ReserveItem> findAllReserveItem(Long brestId){
         return em.createQuery(
                         "select distinct ri " +
                                 "from ReserveItem ri " +
                                 "join fetch ri.user u " +
-                                "where ri.Hospital.id = :hospitalId"
+                                "where ri.Brest.id = :brestId"
                         ,ReserveItem.class)
-                .setParameter("hospitalId",hospitalId)
+                .setParameter("brestId",brestId)
                 .getResultList();
     }
 }

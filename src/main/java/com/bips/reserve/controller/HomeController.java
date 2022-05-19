@@ -39,7 +39,7 @@ public class HomeController {
 
     @GetMapping("/test/ad")
     public String asdqd() {
-        return "admin/hospitalRegister";
+        return "admin/brestRegister";
     }
 
 }

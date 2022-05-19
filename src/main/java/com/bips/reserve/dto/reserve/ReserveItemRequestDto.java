@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ReserveItemRequestDto {
-    private Long hospitalId;
-    private String vaccineName;
+    private Long brestId;
+    private String btableName;
     private Long reserveDateId;
     private Long reserveTimeId;
 }

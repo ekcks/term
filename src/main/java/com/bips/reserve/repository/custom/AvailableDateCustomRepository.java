@@ -4,5 +4,5 @@ import com.bips.reserve.domain.entity.AvailableDate;
 
 public interface AvailableDateCustomRepository {
 
-    AvailableDate findAvailableDateByHospitalIdAndDate(Long hospitalId, String date);
+    AvailableDate findAvailableDateByBrestIdAndDate(Long brestId, String date);
 }

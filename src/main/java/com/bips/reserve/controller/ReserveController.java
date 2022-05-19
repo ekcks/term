@@ -1,22 +1,22 @@
 package com.bips.reserve.controller;
 
-import com.bips.reserve.dto.hospital.HospitalListDto;
-        import com.bips.reserve.dto.reserve.AvailableDateDto;
-        import com.bips.reserve.dto.reserve.AvailableTimeDto;
-        import com.bips.reserve.dto.reserve.ReserveItemRequestDto;
-        import com.bips.reserve.dto.reserve.ReserveItemSimpleDto;
-        import com.bips.reserve.dto.security.PrincipalDetails;
-        import com.bips.reserve.dto.Vaccine.VaccineReserveDto;
-        import com.bips.reserve.service.reserve.ReserveItemService;
-        import lombok.RequiredArgsConstructor;
-        import lombok.extern.slf4j.Slf4j;
-        import org.springframework.security.core.annotation.AuthenticationPrincipal;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.web.bind.annotation.*;
-        import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.bips.reserve.dto.brest.BrestListDto;
+import com.bips.reserve.dto.reserve.AvailableDateDto;
+import com.bips.reserve.dto.reserve.AvailableTimeDto;
+import com.bips.reserve.dto.reserve.ReserveItemRequestDto;
+import com.bips.reserve.dto.reserve.ReserveItemSimpleDto;
+import com.bips.reserve.dto.security.PrincipalDetails;
+import com.bips.reserve.dto.btable.BtableReserveDto;
+import com.bips.reserve.service.reserve.ReserveItemService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-        import java.util.List;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -29,16 +29,16 @@ public class ReserveController {
     /**
      * 예약가능 병원 조회
      */
-    @GetMapping("/hospitals")
+    @GetMapping("/brests")
     public String hospitalList(
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "limit", defaultValue = "10") int limit, Model model,
             @AuthenticationPrincipal PrincipalDetails user) {
 
         reserveItemService.validateDuplicateUser(user.getUsername());
-        List<HospitalListDto> hospitalListDtos = reserveItemService.getAllHospitalInfo(offset, limit);
-        model.addAttribute("hospitalList", hospitalListDtos);
-        return "user/reserve/hospitalList";
+        List<BrestListDto> brestListDtos = reserveItemService.getAllBrestInfo(offset, limit);
+        model.addAttribute("brestList", brestListDtos);
+        return "user/reserve/brestList";
     }
 
     /**
@@ -49,19 +49,19 @@ public class ReserveController {
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "limit", defaultValue = "10") int limit, Model model,
             @RequestParam String addressSearch) {
-        List<HospitalListDto> hospitalListDtos = reserveItemService.getAllHospitalInfoSearchByAddress(addressSearch, offset, limit);
-        model.addAttribute("hospitalList", hospitalListDtos);
-        return "user/reserve/hospitalList";
+        List<BrestListDto> brestListDtos = reserveItemService.getAllBrestInfoSearchByAddress(addressSearch, offset, limit);
+        model.addAttribute("brestList", brestListDtos);
+        return "user/reserve/brestList";
     }
 
     /**
      * 예약가능날짜 조회 및 선택
      */
-    @GetMapping("/{hospitalId}/dates")
-    public String getAvailableDates(@PathVariable Long hospitalId, Model model) {
+    @GetMapping("/{brestId}/dates")
+    public String getAvailableDates(@PathVariable Long brestId, Model model) {
         // 병원이름으로 해당 병원의 예약가능날짜 조회
-        List<AvailableDateDto> availableDates = reserveItemService.getAvailableDates(hospitalId);
-        model.addAttribute("hospitalId", hospitalId);
+        List<AvailableDateDto> availableDates = reserveItemService.getAvailableDates(brestId);
+        model.addAttribute("brestId", brestId);
         model.addAttribute("dates", availableDates);
 
         return "user/reserve/reserveDateSelectForm";
@@ -70,9 +70,9 @@ public class ReserveController {
     /**
      * 예약가능시간 조회 및 선택
      */
-    @GetMapping("/{hospitalId}/times")
+    @GetMapping("/{brestId}/times")
     public String getAvailableTimes(
-            @PathVariable Long hospitalId,
+            @PathVariable Long brestId,
             @RequestParam(name="date") Long selectedDateId, Model model) {
         // 선택한 예약날짜의 pk로 예약가능시간 조회
         List<AvailableTimeDto> times = reserveItemService.getAvailableTimes(selectedDateId);
@@ -84,20 +84,20 @@ public class ReserveController {
     /**
      * 예약가능백신 조회 및 선택
      */
-    @GetMapping("/{hospitalId}/vaccine")
-    public String selectVaccine(
-            @PathVariable Long hospitalId,
+    @GetMapping("/{brestId}/btable")
+    public String selectBtable(
+            @PathVariable Long brestId,
             @RequestParam(name = "date") Long selectedDateId,
             @RequestParam(name = "time") Long selectedTimeId, Model model) {
 
-        List<VaccineReserveDto> vaccines = reserveItemService.getAvailableVaccineNameList(hospitalId);
+        List<BtableReserveDto> btables = reserveItemService.getAvailableBtableNameList(brestId);
 
-        model.addAttribute("vaccines", vaccines);
+        model.addAttribute("btables", btables);
         model.addAttribute("date", selectedDateId);
         model.addAttribute("time", selectedTimeId);
-        model.addAttribute("hospitalId", hospitalId);
+        model.addAttribute("brestId", brestId);
 
-        return "user/reserve/reserveVaccineSelectForm";
+        return "user/reserve/reserveBtableSelectForm";
     }
 
     /**
@@ -108,8 +108,8 @@ public class ReserveController {
             @AuthenticationPrincipal PrincipalDetails principal,
             @ModelAttribute ReserveItemRequestDto reserveItemRequestDto,
             RedirectAttributes redirectAttributes) {
-        log.info("hospitalId = {}", reserveItemRequestDto.getHospitalId());
-        log.info("vaccineName = {}", reserveItemRequestDto.getVaccineName());
+        log.info("brestId = {}", reserveItemRequestDto.getBrestId());
+        log.info("btableName = {}", reserveItemRequestDto.getBtableName());
         log.info("reserveDateId = {}", reserveItemRequestDto.getReserveDateId());
         log.info("reserveTimeId = {}", reserveItemRequestDto.getReserveTimeId());
 
@@ -118,8 +118,8 @@ public class ReserveController {
 
         Long savedUserId = reserveItemService.reserve(
                 username,
-                reserveItemRequestDto.getHospitalId(),
-                reserveItemRequestDto.getVaccineName(),
+                reserveItemRequestDto.getBrestId(),
+                reserveItemRequestDto.getBtableName(),
                 reserveItemRequestDto.getReserveDateId(),
                 reserveItemRequestDto.getReserveTimeId()
         );
@@ -136,7 +136,7 @@ public class ReserveController {
         log.info("username = {}", username);
 
         ReserveItemSimpleDto reserveResult = reserveItemService.getReserveResult(username);
-        if (reserveResult.getHospitalName() == null) {
+        if (reserveResult.getBrestName() == null) {
             return "redirect:/";
         }
         model.addAttribute("reserveResult", reserveResult);

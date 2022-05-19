@@ -2,11 +2,11 @@ package com.bips.reserve.service.reserve;
 
 import com.bips.reserve.domain.entity.*;
         import com.bips.reserve.domain.value.ReserveStatus;
-        import com.bips.reserve.dto.hospital.HospitalListDto;
+        import com.bips.reserve.dto.brest.BrestListDto;
         import com.bips.reserve.dto.reserve.AvailableDateDto;
         import com.bips.reserve.dto.reserve.AvailableTimeDto;
         import com.bips.reserve.dto.reserve.ReserveItemSimpleDto;
-        import com.bips.reserve.dto.Vaccine.VaccineReserveDto;
+        import com.bips.reserve.dto.btable.BtableReserveDto;
         import com.bips.reserve.repository.*;
         import com.bips.reserve.repository.custom.*;
         import lombok.RequiredArgsConstructor;
@@ -24,8 +24,8 @@ import com.bips.reserve.domain.entity.*;
 @Transactional
 public class ReserveItemServiceImpl implements ReserveItemService{
 
-    private final VaccineCustomRepositoryImpl vaccineCustomRepository;
-    private final HospitalRepository hospitalRepository;
+    private final BtableCustomRepositoryImpl btableCustomRepository;
+    private final BrestRepository brestRepository;
     private final AvailableDateRepository availableDateRepository;
     private final AvailableTimeRepository availableTimeRepository;
     private final UserRepository userRepository;
@@ -33,26 +33,26 @@ public class ReserveItemServiceImpl implements ReserveItemService{
 
 
     /**
-     * 유저가 예약하기 버튼을 눌렀을 때 모든 병원의 간단한 정보 (병원이름, 주소, 백신잔여수량) 보여주기
+     * 유저가 예약하기 버튼을 눌렀을 때 모든 레스토랑의 간단한 정보 (병원이름, 주소, 백신잔여수량) 보여주기
      */
     @Override
-    public List<HospitalListDto> getAllHospitalInfo(int offset, int limit) {
-        return hospitalRepository.findHospitalListPaging(offset, limit);
+    public List<BrestListDto> getAllBrestInfo(int offset, int limit) {
+        return brestRepository.findBrestListPaging(offset, limit);
     }
 
     @Override
-    public List<HospitalListDto> getAllHospitalInfoSearchByAddress(String address, int offset, int limit) {
+    public List<BrestListDto> getAllBrestInfoSearchByAddress(String address, int offset, int limit) {
 
-        return hospitalRepository.findHospitalListByAddressPaging(offset, limit, address);
+        return brestRepository.findBrestListByAddressPaging(offset, limit, address);
     }
 
     /**
-     * 병원 이름으로 예약가능날짜 조회
+     * 레스토랑 이름으로 예약가능날짜 조회
      */
     @Override
-    public List<AvailableDateDto> getAvailableDates(Long HospitalId) {
+    public List<AvailableDateDto> getAvailableDates(Long BrestId) {
 
-        return reserveItemRepository.findAvailableDatesByHospitalId(HospitalId)
+        return reserveItemRepository.findAvailableDatesByBrestId(BrestId)
                 .stream().map( m -> new AvailableDateDto(m.getId(), m.getDate())).collect(Collectors.toList());
     }
 
@@ -69,42 +69,42 @@ public class ReserveItemServiceImpl implements ReserveItemService{
      * 예약가능백신 조회
      */
     @Override
-    public List<VaccineReserveDto> getAvailableVaccineNameList(Long hospitalId) {
-        return reserveItemRepository.findAvailableVaccines(hospitalId)
-                .stream().map(v -> new VaccineReserveDto(v.getId(), v.getVaccineName())).collect(Collectors.toList());
+    public List<BtableReserveDto> getAvailableBtableNameList(Long hospitalId) {
+        return reserveItemRepository.findAvailableBtables(hospitalId)
+                .stream().map(v -> new BtableReserveDto(v.getId(), v.getBtableName())).collect(Collectors.toList());
     }
 
     /**
      * 예약처리
      */
     @Override
-    public Long reserve(String username, Long hospitalId, String vaccineName, Long dateId, Long timeId) {
-        Hospital hospital = hospitalRepository.findById(hospitalId).orElseThrow(
+    public Long reserve(String username, Long brestId, String btableName, Long dateId, Long timeId) {
+        Brest brest = brestRepository.findById(brestId).orElseThrow(
                 () -> {
-                    throw new IllegalArgumentException("존재하지 않는 병원입니다.");
+                    throw new IllegalArgumentException("존재하지 않는 레스토랑입니다.");
                 }
         );
-        Vaccine vaccine = vaccineCustomRepository.findVaccine(hospitalId, vaccineName);
+        Btable btable = btableCustomRepository.findBtable(brestId, btableName);
         AvailableTime time = availableTimeRepository.findAvailableTimeById(timeId);
 
         time.decreaseCount();
         if (time.getAcceptCount() <= 0) time.setEnabled(false);
 
-        hospital.removeStock();
+        brest.removeStock();
 
-        vaccine.removeStock();
+        btable.removeStock();
 
         AvailableDate availableDate = availableDateRepository.findById(dateId).get();
 
         User user = userRepository.findByEmail(username).get();
 
         ReserveItem reserveItem = ReserveItem.createReserveItem()
-                .Hospital(hospital)
+                .Brest(brest)
                 .reserveDate(availableDate.getDate())
                 .reserveTime(time.getTime())
                 .status(ReserveStatus.COMP)
                 .user(user)
-                .vaccineName(vaccineName)
+                .btableName(btableName)
                 .build();
         ReserveItem savedReserveItem = reserveItemRepository.save(reserveItem);
 
@@ -150,13 +150,13 @@ public class ReserveItemServiceImpl implements ReserveItemService{
     public void cancelReserveItem(Long reserveItemId) {
         ReserveItem reserveItem = reserveItemRepository.findById(reserveItemId).get();
 
-        Hospital hospital = reserveItem.getHospital();
-        hospital.cancel();
+        Brest brest = reserveItem.getBrest();
+        brest.cancel();
 
-        Vaccine vaccine = vaccineCustomRepository.findVaccineDisabled(hospital.getId(), reserveItem.getVaccineName());
-        vaccine.cancel();
+        Btable btable = btableCustomRepository.findBtableDisabled(brest.getId(), reserveItem.getBtableName());
+        btable.cancel();
 
-        AvailableDate date = availableDateRepository.findAvailableDateByHospitalIdAndDate(hospital.getId(), reserveItem.getReserveDate());
+        AvailableDate date = availableDateRepository.findAvailableDateByBrestIdAndDate(brest.getId(), reserveItem.getReserveDate());
         AvailableTime time = availableTimeRepository.findAvailableTimeByTimeAndDateId(reserveItem.getReserveTime(), date.getId());
         time.cancel();
 

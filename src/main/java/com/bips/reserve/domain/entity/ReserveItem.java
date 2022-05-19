@@ -28,14 +28,14 @@ public class ReserveItem extends BaseEntity {
     private User user;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hospital_id")
-    private Hospital Hospital;
+    @JoinColumn(name = "brest_id")
+    private Brest Brest;
 
     @Enumerated(value = EnumType.STRING)
     private ReserveStatus status = ReserveStatus.COMP;
 
     @Column(nullable = false)
-    private String vaccineName;
+    private String btableName;
     @Column(nullable = false)
     private String reserveDate;
     @Column(nullable = false)
@@ -43,13 +43,13 @@ public class ReserveItem extends BaseEntity {
 
     @Builder(builderMethodName = "createReserveItem")
     public ReserveItem(
-            User user, Hospital Hospital, ReserveStatus status, String reserveDate, int reserveTime, String vaccineName) {
+            User user, Brest Brest, ReserveStatus status, String reserveDate, int reserveTime, String btableName) {
         this.user = user;
-        this.Hospital = Hospital;
+        this.Brest = Brest;
         this.status = status;
         this.reserveDate = reserveDate;
         this.reserveTime = reserveTime;
-        this.vaccineName = vaccineName;
+        this.btableName = btableName;
         this.createAt = LocalDateTime.now();
     }
 
