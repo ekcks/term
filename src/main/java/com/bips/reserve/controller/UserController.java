@@ -1,21 +1,23 @@
 package com.bips.reserve.controller;
 
 import com.bips.reserve.domain.entity.User;
-        import com.bips.reserve.domain.value.Gender;
-        import com.bips.reserve.domain.value.Role;
-        import com.bips.reserve.dto.user.UserAddFormDto;
-        import com.bips.reserve.dto.security.PrincipalDetails;
-        import com.bips.reserve.service.user.UserService;
-        import lombok.RequiredArgsConstructor;
-        import lombok.extern.slf4j.Slf4j;
-        import org.springframework.security.core.annotation.AuthenticationPrincipal;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.validation.BindingResult;
-        import org.springframework.validation.annotation.Validated;
-        import org.springframework.web.bind.annotation.GetMapping;
-        import org.springframework.web.bind.annotation.ModelAttribute;
-        import org.springframework.web.bind.annotation.PostMapping;
+import com.bips.reserve.domain.value.Gender;
+import com.bips.reserve.domain.value.Role;
+import com.bips.reserve.dto.user.UserAddFormDto;
+import com.bips.reserve.dto.security.PrincipalDetails;
+import com.bips.reserve.service.user.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Controller
@@ -38,6 +40,36 @@ public class UserController {
      * 회원 가입 페이지는 joinForm으로
      *
      */
+    @GetMapping("/signupForm")
+    public String signupForm(Model model){
+        UserAddFormDto userAddFormDto = new UserAddFormDto();
+        model.addAttribute("userAddFormDto",userAddFormDto);
+        return "/user/signup/newSignupForm";
+    }
+
+    @PostMapping("/signupForm")
+    public String signupFormP(@Validated @ModelAttribute UserAddFormDto form, BindingResult result){
+        if(result.hasErrors()) {
+            return "user/signup/newSignupForm";
+        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String securePassword = encoder.encode(form.getPassword());
+        User user = User.createUser()
+                .email(form.getEmail())
+                .password(securePassword)
+                .name(form.getName())
+                .role(Role.ROLE_USER)
+                .gender(Gender.valueOf(form.getGender()))
+                .age(form.getAge())
+                .address(form.getAddress())
+                .detailAddress(form.getDetailAddress())
+                .build();
+
+        userService.createUser(user);
+
+        return "index";
+    }
+
     @GetMapping("/signup")
     public String joinForm(@AuthenticationPrincipal PrincipalDetails details, Model model){
 

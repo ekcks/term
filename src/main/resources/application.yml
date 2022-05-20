@@ -10,9 +10,9 @@ spring:
         format_sql: true
         default_batch_fetch_size: 1000
   datasource:
-    url: jdbc:mysql://localhost:3306/bips2?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
-    password: sksms331
+    url: jdbc:mysql://15.164.165.227:3306/bips?serverTimezone=UTC&characterEncoding=UTF-8
+    username: adminA
+    password: P@ssw0rd
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
