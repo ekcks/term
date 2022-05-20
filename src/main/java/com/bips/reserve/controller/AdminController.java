@@ -72,7 +72,7 @@ public class AdminController {
             return "admin/brestRegister";
         }
 
-        makeBTableInfoMap(form.getA(), form.getB(), form.getC(), form.getD(), form.getBtableInfoMap());
+        makeBTableInfoMap(form.getSeat2(), form.getSeat4(), form.getSeat6(), form.getSeat8(), form.getBtableInfoMap());
 
         timeParse(form);
         /**
@@ -122,8 +122,8 @@ public class AdminController {
             return "admin/brestDetail";
         }
         brestUpdateDto.setId(brestId);
-        makeBTableInfoMap(brestUpdateDto.getA(), brestUpdateDto.getB(),
-                brestUpdateDto.getC(), brestUpdateDto.getD(), brestUpdateDto.getBtableInfoMap());
+        makeBTableInfoMap(brestUpdateDto.getSeat2(), brestUpdateDto.getSeat4(),
+                brestUpdateDto.getSeat6(), brestUpdateDto.getSeat8(), brestUpdateDto.getBtableInfoMap());
         adminService.brestUpdate(brestUpdateDto);
 
         return "redirect:/admin/brest/list";
@@ -147,19 +147,19 @@ public class AdminController {
     }
 
     // btableInfoMap만드는 메서드
-    private void makeBTableInfoMap(Integer A, Integer B, Integer C, Integer D, Map<String,Integer> btableInfoMap) {
+    private void makeBTableInfoMap(Integer seat2, Integer seat4, Integer seat6, Integer seat8, Map<String,Integer> btableInfoMap) {
 
-        if(A !=null && A !=0){
-            btableInfoMap.put("A", A);
+        if(seat2 !=null && seat2 !=0){
+            btableInfoMap.put("seat2", seat2);
         }
-        if(B !=null && B !=0){
-            btableInfoMap.put("B", B);
+        if(seat4 !=null && seat4 !=0){
+            btableInfoMap.put("seat4", seat4);
         }
-        if(C !=null && C !=0){
-            btableInfoMap.put("C", C);
+        if(seat6 !=null && seat6 !=0){
+            btableInfoMap.put("seat6", seat6);
         }
-        if(D !=null && D !=0){
-            btableInfoMap.put("D", D);
+        if(seat8 !=null && seat8 !=0){
+            btableInfoMap.put("seat8", seat8);
         }
     }
 

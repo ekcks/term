@@ -54,27 +54,27 @@ public class AdminInit {
                 .build();
         brest.setAdmin(admin);
 
-        Btable A = Btable.createBTable()
-                .btableName("A")
+        Btable seat2 = Btable.createBTable()
+                .btableName("seat2")
                 .quantity(50)
                 .build();
-        Btable B = Btable.createBTable()
-                .btableName("B")
+        Btable seat4 = Btable.createBTable()
+                .btableName("seat4")
                 .quantity(20)
                 .build();
-        Btable C = Btable.createBTable()
-                .btableName("C")
+        Btable seat6 = Btable.createBTable()
+                .btableName("seat6")
                 .quantity(40)
                 .build();
-       Btable D = Btable.createBTable()
-                .btableName("D")
+       Btable seat8 = Btable.createBTable()
+                .btableName("seat8")
                 .quantity(10)
                 .build();
 
-        A.addBrest(brest);
-        B.addBrest(brest);
-        C.addBrest(brest);
-        D.addBrest(brest);
+        seat2.addBrest(brest);
+        seat4.addBrest(brest);
+        seat6.addBrest(brest);
+        seat8.addBrest(brest);
 
         List<String> dateList=new ArrayList<>();
         dateList.add("2021.1.1");

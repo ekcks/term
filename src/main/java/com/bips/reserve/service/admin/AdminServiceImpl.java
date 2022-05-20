@@ -167,10 +167,10 @@ public class AdminServiceImpl implements AdminService {
                 .endDate(availableDates.get(availableDates.size()-1).getDate())
                 .startTime(String.valueOf(availableTimes.get(0).getTime()))
                 .endTime(String.valueOf(availableTimes.get(availableTimes.size()-1).getTime()))
-                .A(btableIsPresent(btableMap,"A"))
-                .B(btableIsPresent(btableMap,"B"))
-                .C(btableIsPresent(btableMap,"C"))
-                .D(btableIsPresent(btableMap,"D"))
+                .seat2(btableIsPresent(btableMap,"seat2"))
+                .seat4(btableIsPresent(btableMap,"seat4"))
+                .seat6(btableIsPresent(btableMap,"seat6"))
+                .seat8(btableIsPresent(btableMap,"seat8"))
                 .build();
     }
 

@@ -36,13 +36,13 @@ public class BrestUpdateDto {
 
 
     @NotNull(message = "좌석 수를 입력해주세요.")
-    private Integer A;
+    private Integer seat2;
     @NotNull(message = "좌석 수을 입력해주세요.")
-    private Integer B;
+    private Integer seat4;
     @NotNull(message = "좌석 수을 입력해주세요.")
-    private Integer C;
+    private Integer seat6;
     @NotNull(message = "좌석 수을 입력해주세요.")
-    private Integer D;
+    private Integer seat8;
 
     // 테이블마다 잔여수량을 달리하기 위해 Map 사용 (key:테이블이름, value:잔여 좌석)
     private Map<String, Integer> btableInfoMap = new HashMap<>();
@@ -58,8 +58,8 @@ public class BrestUpdateDto {
     @Builder(builderMethodName = "createBrestUpdateDto")
     public BrestUpdateDto(Long id,String brestName, String startDate, String endDate, Integer dateAccept,
                           String startTime, String endTime, Integer timeAccept, String address,
-                          String detailAddress, Integer A,
-                          Integer B, Integer C, Integer D) {
+                          String detailAddress, Integer seat2,
+                          Integer seat4, Integer seat6, Integer seat8) {
         this.id=id;
         this.brestName = brestName;
         this.startDate = startDate;
@@ -70,10 +70,10 @@ public class BrestUpdateDto {
         this.timeAccept = timeAccept;
         this.address = address;
         this.detailAddress = detailAddress;
-        this.A = A;
-        this.B = B;
-        this.C = C;
-        this.D = D;
+        this.seat2 = seat2;
+        this.seat4 = seat4;
+        this.seat6 = seat6;
+        this.seat8 = seat8;
 
     }
 }
