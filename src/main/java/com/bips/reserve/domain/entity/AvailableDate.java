@@ -76,7 +76,7 @@ public class AvailableDate {
         this.acceptCount=acceptCount;
     }
 
-    //병원 상세내용 수정 시, count update
+    //레스토랑 상세내용 수정 시, count update
     public void updateAcceptCount(Integer acceptCount){
         this.acceptCount=acceptCount;
     }

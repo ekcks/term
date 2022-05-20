@@ -24,7 +24,7 @@ public interface BrestRepository extends JpaRepository<Brest, Long>, BrestCustom
     List<BrestSimpleInfoDto> findAllBrestNameAndAddress();
 
     /**
-     * 어드민이 관리하는 모든 레스토랑 정보 조회 (병원이름, 장소)
+     * 어드민이 관리하는 모든 레스토랑 정보 조회 (레스토랑이름, 장소)
      * 어드민이 등록한 모든 레스토랑의 간단한 정보만을 조회하기 위한 쿼리
      */
     @Query("select new com.bips.reserve.dto.brest.BrestSimpleInfoDto(h.brestName, h.address) " +

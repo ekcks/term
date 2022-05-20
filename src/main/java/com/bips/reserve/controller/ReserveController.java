@@ -27,7 +27,7 @@ public class ReserveController {
     private final ReserveItemService reserveItemService;
 
     /**
-     * 예약가능 병원 조회
+     * 예약가능 레스토랑 조회
      */
     @GetMapping("/brests")
     public String hospitalList(
@@ -42,7 +42,7 @@ public class ReserveController {
     }
 
     /**
-     * 예약가능 병원 주소로 검색
+     * 예약가능 레스토랑 주소로 검색
      */
     @GetMapping("/search")
     public String searchByAddress(
@@ -59,7 +59,7 @@ public class ReserveController {
      */
     @GetMapping("/{brestId}/dates")
     public String getAvailableDates(@PathVariable Long brestId, Model model) {
-        // 병원이름으로 해당 병원의 예약가능날짜 조회
+        // 레스토랑이름으로 해당 레스토랑의 예약가능날짜 조회
         List<AvailableDateDto> availableDates = reserveItemService.getAvailableDates(brestId);
         model.addAttribute("brestId", brestId);
         model.addAttribute("dates", availableDates);
@@ -82,7 +82,7 @@ public class ReserveController {
     }
 
     /**
-     * 예약가능백신 조회 및 선택
+     * 예약가능테이블 조회 및 선택
      */
     @GetMapping("/{brestId}/btable")
     public String selectBtable(

@@ -33,7 +33,7 @@ public class ReserveItemServiceImpl implements ReserveItemService{
 
 
     /**
-     * 유저가 예약하기 버튼을 눌렀을 때 모든 레스토랑의 간단한 정보 (병원이름, 주소, 백신잔여수량) 보여주기
+     * 유저가 예약하기 버튼을 눌렀을 때 모든 레스토랑의 간단한 정보 (레스토랑이름, 주소, 테이블잔여수량) 보여주기
      */
     @Override
     public List<BrestListDto> getAllBrestInfo(int offset, int limit) {
@@ -66,7 +66,7 @@ public class ReserveItemServiceImpl implements ReserveItemService{
     }
 
     /**
-     * 예약가능백신 조회
+     * 예약가능테이블 조회
      */
     @Override
     public List<BtableReserveDto> getAvailableBtableNameList(Long hospitalId) {

@@ -76,7 +76,7 @@ public class Btable extends BaseEntity{
         this.quantity=restStock;
     }
 
-    //병원 수정 시, 사용
+    //레스토랑 수정 시, 사용
     public void updateBtableQty(Integer quantity){
         this.quantity=quantity;
     }
