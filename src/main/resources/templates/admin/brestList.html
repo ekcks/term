@@ -41,9 +41,9 @@
     </tr>
 
     <tr th:each="brest : ${brestList}" style="cursor:pointer;" th:if="${brestList.size() > 0}">
-        <td th:text="${brest.brestName}">바른 병원</td>
+        <td th:text="${brest.brestName}">bips 본점</td>
         <td th:text="${brest.address}">서울 강서구</td>
-        <td th:text="${brest.qty}">100</td>
+        <td th:text="${brest.qty}">10</td>
         <td class="btn">
             <button th:onclick="|location.href='@{/admin/brest/{brestId} (brestId=${brest.id})}'|">
                 상세 정보 및 수정
