@@ -17,9 +17,6 @@ spring:
 
 
 
-
-
-
   session:
     store-type: jdbc
     # spring.session.jdbc.initialize-schema: always 설정이 있어야만
@@ -33,15 +30,6 @@ spring:
       - errors
 
 
-
-custom:
-  oauth2:
-    kakao:
-      client-id: 88a081241234cfacbedef7018ac451316f3
-      client-secret: jpXULoEzrasfawegsqYXlRLyyOHn2i60q
-    naver:
-      client-id: B5yvH3Zaweyawerawwe6repj4z0L
-      client-secret: sArXFasdfawef
 
 
 logging:
