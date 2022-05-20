@@ -27,10 +27,10 @@ public class ReserveController {
     private final ReserveItemService reserveItemService;
 
     /**
-     * 예약가능 병원 조회
+     * 예약가능 레스토랑 조회
      */
     @GetMapping("/brests")
-    public String hospitalList(
+    public String brestlList(
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "limit", defaultValue = "10") int limit, Model model,
             @AuthenticationPrincipal PrincipalDetails user) {
@@ -42,7 +42,7 @@ public class ReserveController {
     }
 
     /**
-     * 예약가능 병원 주소로 검색
+     * 예약가능 레스토랑 주소로 검색
      */
     @GetMapping("/search")
     public String searchByAddress(
@@ -82,7 +82,7 @@ public class ReserveController {
     }
 
     /**
-     * 예약가능백신 조회 및 선택
+     * 예약가능 테이블 조회 및 선택
      */
     @GetMapping("/{brestId}/btable")
     public String selectBtable(

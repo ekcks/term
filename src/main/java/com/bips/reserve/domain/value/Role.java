@@ -1,7 +1,7 @@
 package com.bips.reserve.domain.value;
 
 import lombok.Getter;
-        import lombok.RequiredArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor

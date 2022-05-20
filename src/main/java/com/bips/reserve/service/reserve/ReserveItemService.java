@@ -15,11 +15,11 @@ public interface ReserveItemService {
 
     List<BrestListDto> getAllBrestInfoSearchByAddress(String address, int offset, int limit);
 
-    List<AvailableDateDto> getAvailableDates(Long hospitalId);
+    List<AvailableDateDto> getAvailableDates(Long brestId);
 
     List<AvailableTimeDto> getAvailableTimes(Long id);
 
-    List<BtableReserveDto> getAvailableBtableNameList(Long hospitalId);
+    List<BtableReserveDto> getAvailableBtableNameList(Long brestId);
 
     Long reserve(String username, Long brestId, String btableName, Long dateId, Long timeId);
 

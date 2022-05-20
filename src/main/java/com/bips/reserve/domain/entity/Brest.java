@@ -1,20 +1,20 @@
 package com.bips.reserve.domain.entity;
 
-        import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-        import com.bips.reserve.exception.vaccine.NotEnoughStockException;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
-        import org.hibernate.annotations.BatchSize;
-        import org.hibernate.annotations.ColumnDefault;
-        import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bips.reserve.exception.btable.NotEnoughStockException;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Type;
 
-        import javax.persistence.*;
-        import java.time.LocalDateTime;
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Map;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity

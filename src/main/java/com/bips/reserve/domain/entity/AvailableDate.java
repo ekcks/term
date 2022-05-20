@@ -1,17 +1,17 @@
 package com.bips.reserve.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-        import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-        import com.bips.reserve.exception.vaccine.NotEnoughStockException;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
-        import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bips.reserve.exception.btable.NotEnoughStockException;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
-        import javax.persistence.*;
-        import java.util.ArrayList;
-        import java.util.List;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -51,7 +51,7 @@ public class AvailableDate {
             setEnabled(false);
         }
         if(restStock<0){
-            throw new NotEnoughStockException("예약 가능한 수량이 부족합니다.");
+            throw new NotEnoughStockException("예약 가능한 테이블이 없습니다.");
         }
 
         this.acceptCount=restStock;
@@ -76,7 +76,7 @@ public class AvailableDate {
         this.acceptCount=acceptCount;
     }
 
-    //병원 상세내용 수정 시, count update
+    //레스토랑 상세내용 수정 시, count update
     public void updateAcceptCount(Integer acceptCount){
         this.acceptCount=acceptCount;
     }

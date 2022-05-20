@@ -1,13 +1,13 @@
 package com.bips.reserve.domain.entity;
 
 import com.bips.reserve.domain.value.ReserveStatus;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-        import javax.persistence.*;
-        import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * USER의 예약서

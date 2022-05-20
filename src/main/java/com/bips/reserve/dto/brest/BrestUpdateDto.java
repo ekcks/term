@@ -1,14 +1,14 @@
 package com.bips.reserve.dto.brest;
 
 
-        import com.bips.reserve.domain.entity.Brest;
-        import lombok.Builder;
-        import lombok.Data;
-        import lombok.NoArgsConstructor;
+import com.bips.reserve.domain.entity.Brest;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-        import javax.validation.constraints.NotNull;
-        import java.util.HashMap;
-        import java.util.Map;
+import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor

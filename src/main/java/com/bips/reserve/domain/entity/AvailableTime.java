@@ -1,13 +1,13 @@
 package com.bips.reserve.domain.entity;
 
-import com.bips.reserve.exception.vaccine.NotEnoughStockException;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
-        import org.hibernate.annotations.Type;
+import com.bips.reserve.exception.btable.NotEnoughStockException;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
-        import javax.persistence.*;
+import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -42,7 +42,7 @@ public class AvailableTime {
             setEnabled(false);
         }
         if(restStock<0){
-            throw new NotEnoughStockException("예약 가능한 수량이 부족합니다.");
+            throw new NotEnoughStockException("예약 가능한 테이블이 없습니다.");
         }
         this.availableDate.decreaseCount();
         this.acceptCount=restStock;

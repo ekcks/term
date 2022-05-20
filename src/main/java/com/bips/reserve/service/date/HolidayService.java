@@ -11,7 +11,7 @@ import com.ibm.icu.util.ChineseCalendar;
         import java.util.Set;
 
 /**
- * 성진님 추천 공휴일 처리 기능
+ * 공휴일 처리 기능
  */
 
 @Component

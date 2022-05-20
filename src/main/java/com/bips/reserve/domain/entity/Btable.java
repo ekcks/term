@@ -1,14 +1,14 @@
 package com.bips.reserve.domain.entity;
 
-        import com.bips.reserve.exception.vaccine.NotEnoughStockException;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
-        import org.hibernate.annotations.Type;
+import com.bips.reserve.exception.btable.NotEnoughStockException;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
-        import javax.persistence.*;
-        import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -70,13 +70,13 @@ public class Btable extends BaseEntity{
             setEnabled(false);
         }
         if(restStock<0){
-            throw new NotEnoughStockException("예약 가능한 수량이 부족합니다.");
+            throw new NotEnoughStockException("예약 가능한 테이블 수가 부족합니다.");
         }
 
         this.quantity=restStock;
     }
 
-    //병원 수정 시, 사용
+    //레스토랑 수정 시, 사용
     public void updateBtableQty(Integer quantity){
         this.quantity=quantity;
     }

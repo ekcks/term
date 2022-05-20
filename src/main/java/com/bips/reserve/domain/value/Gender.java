@@ -1,7 +1,7 @@
 package com.bips.reserve.domain.value;
 
 import lombok.Data;
-        import lombok.Getter;
+import lombok.Getter;
 
 @Getter
 public enum Gender {

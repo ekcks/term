@@ -1,20 +1,20 @@
 
 package com.bips.reserve.dto.brest;
 
-        import com.bips.reserve.domain.entity.Brest;
-        import lombok.Builder;
-        import lombok.Data;
-        import lombok.NoArgsConstructor;
+import com.bips.reserve.domain.entity.Brest;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-        import javax.validation.constraints.NotEmpty;
-        import javax.validation.constraints.NotNull;
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * 어드민으로부터 레스토랑등록 요청을 처리하기 위한 DTO
+ * 어드민으로부터 레스토랑 등록 요청을 처리하기 위한 DTO
  */
 
 @Data
@@ -48,13 +48,13 @@ public class BrestRequestDto {
 
     private List<Integer> btableQuantities = new ArrayList<>();
 
-    @NotNull(message = "수량을 입력해주세요.")
+    @NotNull(message = "테이블 수를 입력해주세요.")
     private Integer A;
-    @NotNull(message = "수량을 입력해주세요.")
+    @NotNull(message = "테이블 수를 입력해주세요.")
     private Integer B;
-    @NotNull(message = "수량을 입력해주세요.")
+    @NotNull(message = "테이블 수를 입력해주세요.")
     private Integer C;
-    @NotNull(message = "수량을 입력해주세요.")
+    @NotNull(message = "테이블 수를 입력해주세요.")
     private Integer D;
 
     // 테이블마다 잔여좌석을 달리하기 위해 Map 사용 (key:테이블이름, value:잔여좌석)

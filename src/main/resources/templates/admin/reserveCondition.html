@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>병원목록</title>
+    <title>래스토랑 목록</title>
 
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/adminlist.css}">
@@ -17,15 +17,15 @@
 </header>
 
 
-<table class="hospital-List" >
+<table class="brest-List" >
     <caption>예약 현황</caption>
     <tr>
         <th>레스토랑명</th>
         <th>예약자명</th>
         <th>테이블명</th>
-        <th>예약일자</th>
-        <th>예약시간</th>
-        <th>예약상태</th>
+        <th>예약 일자</th>
+        <th>예약 시간</th>
+        <th>예약 상태</th>
     </tr>
 
     <tr th:each="reserveItemCondition : ${reserveItemConditions}" style="cursor:pointer;" th:if="${reserveItemConditions!=null}">

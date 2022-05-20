@@ -29,7 +29,7 @@ public class AdminController {
     private final AdminService adminService;
 
     /**
-     * 병원 이름으로 병원 단건 조회
+     * 레스토랑 이름으로 레스토랑 단건 조회
      */
     @GetMapping("/brest")
     @ResponseBody
@@ -40,7 +40,7 @@ public class AdminController {
     }
 
     /**
-     * 병원 등록 폼 랜더링
+     * 레스토랑 등록 폼 랜더링
      */
     @GetMapping("/brest/add")
     public String brestForm(Model model){
@@ -60,8 +60,8 @@ public class AdminController {
     }
 
     /**
-     * 병원 등록
-     * @param authentication 등록되는 병원애 admin을 추가해주기 위해 현재 인증 객체를 사용
+     * 레스토랑 등록
+     * @param authentication 등록되는 레스토랑에 admin을 추가해주기 위해 현재 인증 객체를 사용
      */
     @PostMapping("/brest/add")
     public String addBRest(
@@ -88,7 +88,7 @@ public class AdminController {
     }
 
     /**
-     * 병원 목록
+     * 레스톨랑 목록
      */
     @GetMapping("/brest/list")
     public String brestList(@AuthenticationPrincipal PrincipalDetails principal, Model model,
@@ -100,7 +100,7 @@ public class AdminController {
     }
 
     /**
-     * 병원 상세정보 조회
+     * 레스토랑 상세정보 조회
      */
     @GetMapping("/brest/{brestId}")
     public String brestInfo(Model model,@PathVariable("brestId")Long id){
@@ -112,7 +112,7 @@ public class AdminController {
     }
 
     /**
-     * 병원 수정
+     * 레스토랑 수정
      */
     @PostMapping("/brest/" + "edit/{brestId}")
     public String brestEdit(@PathVariable Long brestId,

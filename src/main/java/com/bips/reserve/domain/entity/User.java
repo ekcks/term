@@ -1,14 +1,14 @@
 package com.bips.reserve.domain.entity;
 
 import com.bips.reserve.domain.value.Gender;
-        import com.bips.reserve.domain.value.Role;
-        import lombok.AccessLevel;
-        import lombok.Builder;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
+import com.bips.reserve.domain.value.Role;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-        import javax.persistence.*;
-        import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity

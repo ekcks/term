@@ -1,22 +1,22 @@
 package com.bips.reserve.service.reserve;
 
 import com.bips.reserve.domain.entity.*;
-        import com.bips.reserve.domain.value.ReserveStatus;
-        import com.bips.reserve.dto.brest.BrestListDto;
-        import com.bips.reserve.dto.reserve.AvailableDateDto;
-        import com.bips.reserve.dto.reserve.AvailableTimeDto;
-        import com.bips.reserve.dto.reserve.ReserveItemSimpleDto;
-        import com.bips.reserve.dto.btable.BtableReserveDto;
-        import com.bips.reserve.repository.*;
-        import com.bips.reserve.repository.custom.*;
-        import lombok.RequiredArgsConstructor;
-        import lombok.extern.slf4j.Slf4j;
-        import org.springframework.stereotype.Service;
-        import org.springframework.transaction.annotation.Transactional;
+import com.bips.reserve.domain.value.ReserveStatus;
+import com.bips.reserve.dto.brest.BrestListDto;
+import com.bips.reserve.dto.reserve.AvailableDateDto;
+import com.bips.reserve.dto.reserve.AvailableTimeDto;
+import com.bips.reserve.dto.reserve.ReserveItemSimpleDto;
+import com.bips.reserve.dto.btable.BtableReserveDto;
+import com.bips.reserve.repository.*;
+import com.bips.reserve.repository.custom.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-        import java.util.List;
-        import java.util.Optional;
-        import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -33,7 +33,7 @@ public class ReserveItemServiceImpl implements ReserveItemService{
 
 
     /**
-     * 유저가 예약하기 버튼을 눌렀을 때 모든 레스토랑의 간단한 정보 (병원이름, 주소, 백신잔여수량) 보여주기
+     * 유저가 예약하기 버튼을 눌렀을 때 모든 레스토랑의 간단한 정보 (레스토랑 이름, 주소, 테이블 잔여 수) 보여주기
      */
     @Override
     public List<BrestListDto> getAllBrestInfo(int offset, int limit) {
@@ -66,11 +66,11 @@ public class ReserveItemServiceImpl implements ReserveItemService{
     }
 
     /**
-     * 예약가능백신 조회
+     * 예약가능 테이블 조회
      */
     @Override
-    public List<BtableReserveDto> getAvailableBtableNameList(Long hospitalId) {
-        return reserveItemRepository.findAvailableBtables(hospitalId)
+    public List<BtableReserveDto> getAvailableBtableNameList(Long brestId) {
+        return reserveItemRepository.findAvailableBtables(brestId)
                 .stream().map(v -> new BtableReserveDto(v.getId(), v.getBtableName())).collect(Collectors.toList());
     }
 

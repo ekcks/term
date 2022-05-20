@@ -2,8 +2,8 @@
 package com.bips.reserve.dto.brest;
 
 
-        import lombok.AllArgsConstructor;
-        import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Data
 @AllArgsConstructor

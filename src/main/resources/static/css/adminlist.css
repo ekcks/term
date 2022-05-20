@@ -31,7 +31,7 @@ header .logout a:last-child {
 }
 
 /* 테이블 CSS */
-.hospital-List {
+.brest-List {
     width: 900px;
     background-color: #fff;
     border-collapse: collapse;
@@ -40,7 +40,7 @@ header .logout a:last-child {
     overflow: hidden;
     margin-top:10px;
 }
-.hospital-List caption:not(.search) {
+.brest-List caption:not(.search) {
     font-family: 'SLEIGothicTTF';
     font-size: 30px;
     margin-bottom: 30px;
@@ -66,19 +66,19 @@ caption.search button{
     padding: 5px;
 }
 
-.hospital-List tr {
+.brest-List tr {
     transition: 0.3s;
 }
-.hospital-List tr:hover {
+.brest-List tr:hover {
     background-color: #eee;
 }
-.hospital-List th,
-.hospital-List td {
+.brest-List th,
+.brest-List td {
     padding: 12px;
     text-align: center;
 }
 /* 첫 줄 */
-.hospital-List tr th{
+.brest-List tr th{
     background-color: dodgerblue;
     color:#eee;
 }
