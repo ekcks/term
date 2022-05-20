@@ -35,7 +35,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Long addBrest(BrestRequestDto brestRequestDto,String adminName) throws Exception{
 
-        // 병원 엔티티 생성
+        // 레스토랑 엔티티 생성
         Brest brest = brestRequestDto.toBRestEntity();
         /**
          * 현재 Authentication 객체로부터 받은 adminName을 등록하는 레스토랑의 admin으로 설정하는 방식

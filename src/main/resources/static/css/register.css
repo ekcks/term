@@ -73,7 +73,7 @@ input, select {
     margin-top: 15px;
 }
 
-/* 백신 종류 */
+/* 테이블 종류 */
 .info.kind b,
 .info.max b {
     margin-bottom:10px;
