@@ -81,7 +81,7 @@ public class UserController {
             model.addAttribute("userAddFormDto",userAddFormDto);
             return "user/signup/signupForm";
         }
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @PostMapping("/signup")
@@ -102,6 +102,6 @@ public class UserController {
 
         userService.createUser(user);
 
-        return "redirect:/";
+        return "redirect:/index";
     }
 }

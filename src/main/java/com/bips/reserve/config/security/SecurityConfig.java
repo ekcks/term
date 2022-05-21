@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/adminLogin")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/index")
                 .failureHandler(userLoginFailHandler)  //loginfail 페이지로 forward될것 postmapping 필요
                 .and()
                 .logout()// 로그아웃

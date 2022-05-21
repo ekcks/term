@@ -14,9 +14,13 @@ public class HomeController {
     @GetMapping("/")
     public String home(@AuthenticationPrincipal PrincipalDetails details) {
 
-        return "index";
+        return "MainPage";
     }
 
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
     @GetMapping("/adminLogin")
     public String loginForm() {
         return "user/login/loginForm";
