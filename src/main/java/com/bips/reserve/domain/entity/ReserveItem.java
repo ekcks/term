@@ -32,7 +32,7 @@ public class ReserveItem extends BaseEntity {
     private Brest Brest;
 
     @Enumerated(value = EnumType.STRING)
-    private ReserveStatus status = ReserveStatus.COMP;
+    private ReserveStatus status = ReserveStatus.예약완료;
 
     @Column(nullable = false)
     private String btableName;

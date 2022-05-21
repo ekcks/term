@@ -102,7 +102,7 @@ public class ReserveItemServiceImpl implements ReserveItemService{
                 .Brest(brest)
                 .reserveDate(availableDate.getDate())
                 .reserveTime(time.getTime())
-                .status(ReserveStatus.COMP)
+                .status(ReserveStatus.예약완료)
                 .user(user)
                 .btableName(btableName)
                 .build();
