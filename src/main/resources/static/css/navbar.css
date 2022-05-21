@@ -7,13 +7,13 @@
 
 /* nav */
 header {
-    background-color: #1aa3ff;
+    background-color: #eee;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    position:fixed;
+    /*position:fixed;*/
     width: 100%;
     top:0;
 }
