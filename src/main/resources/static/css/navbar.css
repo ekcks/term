@@ -1,13 +1,13 @@
 @font-face {
-    font-family: 'SLEIGothicTTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
     font-weight: normal;
     font-style: normal;
 }
 
 /* nav */
 header {
-    background-color: #eee;
+    background-color: #1aa3ff;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -19,7 +19,7 @@ header {
 }
 header .logout a {
     display: inline-block;
-    font-family: 'SLEIGothicTTF';
+    font-family: 'Gothic A1';
     margin-left: 15px;
 }
 header .logout a:hover {

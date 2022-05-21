@@ -2,21 +2,22 @@
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
 @font-face {
-    font-family: 'MaruBuri-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'SLEIGothicTTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
     font-weight: normal;
     font-style: normal;
 }
 
 * {
-    font-family: 'SLEIGothicTTF';
+    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Jua', sans-serif;
 }
 
 body {
@@ -54,8 +55,11 @@ header .logout a:last-child {
     /* width: 100%; */
 }
 .init {
-    width: 400px;
-    height: 330px;
+
+width: 800px;
+height: 550px;
+    //width: 500px;
+   //height: 330px;
     background-color: #fff;
     border-radius: 10px;
     padding: 50px;
@@ -150,14 +154,15 @@ header .logout a:last-child {
 
 /* 예약하기 */
 .reserve {
-    background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
+    background-color: grey;
 }
 .reserve a {
     display: inline-block;
-    width: 200px;
-    height: 24px;
-    text-align: center;
-    padding: 15px 0;
+    text-align : center;
+    width: 300px;
+    height: 300px;
+    float:left;
+    padding: 15px;
     margin: 10px;
     border-radius: 10px;
     background-color:#fff;
@@ -166,17 +171,14 @@ header .logout a:last-child {
 
 .reserve a:nth-child(1) span {
     font-weight: 600;
-    color:blue;
+    color:skyblue;
 }
 
 .reserve a:nth-child(2) span {
     font-weight: 600;
     color: orange;
 }
-.reserve a:nth-child(3) span {
-    font-weight: 600;
-    color: crimson;
-}
+
 
 .reserve a:hover {
     transform: scale(1.05);

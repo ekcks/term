@@ -14,6 +14,7 @@
     <script>
         $.datepicker.setDefaults({
             dateFormat: 'yy-mm-dd',
+            setDate: 'today',
             prevText: '이전 달',
             nextText: '다음 달',
             monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -22,15 +23,20 @@
             dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
             dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
             showMonthAfterYear: true,
-            yearSuffix: '년'
-        });
+            yearSuffix: '년',
+            minDate: '-1D'
+            });
+
     </script>
 
     <script>
+
         $(function () {
             $("#datepicker1, #datepicker2").datepicker({
                 dateFormat: 'yy.mm.dd'
+
             });
+
         });
     </script>
     <style>
@@ -107,13 +113,13 @@
             <b>최대 예약 가능 수</b>
             <div>
                 <label>일일</label>
-                <input type="number" placeholder="수량을 입력하세요." th:field="*{dateAccept}">
+                <input type="number" min="0" placeholder="수량을 입력하세요." th:field="*{dateAccept}">
             </div>
             <div class="field-error" th:errors="*{dateAccept}">
             </div>
             <div>
                 <label>시간 당</label>
-                <input type="number" placeholder="수량을 입력하세요." th:field="*{timeAccept}">
+                <input type="number" min="0" placeholder="수량을 입력하세요." th:field="*{timeAccept}">
             </div>
             <div class="field-error" th:errors="*{timeAccept}">
             </div>
@@ -123,25 +129,25 @@
             <b>테이블/ 좌석 수</b>
             <div>
                 <label for="seat2">2인석</label>
-                <input type="number" placeholder="좌석 수를 입력하세요." th:field="*{seat2}" id="seat2">
+                <input type="number" min="0" placeholder="좌석 수를 입력하세요." th:field="*{seat2}" id="seat2">
             </div>
             <div class="field-error" th:errors="*{seat2}">
             </div>
             <div>
                 <label for="seat4">4인석</label>
-                <input type="number" placeholder="좌석 수를 입력하세요." th:field="*{seat4}" id="seat4">
+                <input type="number" min="0" placeholder="좌석 수를 입력하세요." th:field="*{seat4}" id="seat4">
             </div>
             <div class="field-error" th:errors="*{seat4}">
             </div>
             <div>
                 <label for="seat6">6인석</label>
-                <input type="number" placeholder="좌석 수를 입력하세요." th:field="*{seat6}" id="seat6">
+                <input type="number" min="0" placeholder="좌석 수를 입력하세요." th:field="*{seat6}" id="seat6">
             </div>
             <div class="field-error" th:errors="*{seat6}">
             </div>
             <div>
                 <label for="seat8">8인석</label>
-                <input type="number" placeholder="좌석 수를 입력하세요." th:field="*{seat8}" id="seat8">
+                <input type="number" min="0" placeholder="좌석 수를 입력하세요." th:field="*{seat8}" id="seat8">
             </div>
             <div class="field-error" th:errors="*{seat8}">
             </div>
