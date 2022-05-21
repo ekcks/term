@@ -96,43 +96,9 @@
     </script>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BIPS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"\>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/index}">로그인</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" >회원가입</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            예약
-                        </a>
-                        <!--                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">-->
-                        <!--                            <li><a class="dropdown-item" href="#">예약하기</a></li>-->
-                        <!--                            <li><hr class="dropdown-divider"></li>-->
-                        <!--                            <li><a class="dropdown-item" href="#">예약조회</a></li>-->
-                        <!--                            <li><a class="dropdown-item" href="#">예약취소</a></li>-->
-                        <!--                            <li><a class="dropdown-item" href="#">예약수정</a></li>-->
-                        <!--                        </ul>-->
-                    </li>
-                </ul>
-                </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<header th:replace="~{fragment/header :: bar}">
 </header>
+
 <main>
     <div class="row" id="contatti">
         <div class="container mt-5" >
