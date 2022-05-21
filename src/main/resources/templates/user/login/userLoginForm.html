@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: bar}">
+
+</header>
+<div class="frame" style="margin-top: 50px;">
+    <!-- 로그인 -->
+    <div class="card p-5 m-5" style="border-radius: 10px;" sec:authorize="!isAuthenticated()">
+        <section>
+            <h1>로그인</h1>
+
+
+<!--            <form th:action="@{/login}" method="post">-->
+<!--                <div class="info">-->
+<!--                    <label for="username" th:text="${'username'}"></label>-->
+<!--                    <input id="username" name="username" placeholder="이메일을 입력해 주세요.">-->
+<!--&lt;!&ndash;                    <div th:if="${errorMsg!=null}">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p th:text="${errorMsg}" class="field-error"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                </div>-->
+<!--                <div class="info">-->
+<!--                    <label for="password" th:text="${'password'}"></label>-->
+<!--                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요.">-->
+<!--&lt;!&ndash;                    <div th:if="${errorMsg!=null}">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p th:text="${errorMsg}" class="field-error"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                </div>-->
+<!--                <input type="submit" value="로그인하기">-->
+<!--            </form>-->
+
+
+            <div class="">
+                <div class="form-floating mb-1" id="inputId">
+                    <input type="email" class="form-control rounded-4" id="userEmail" placeholder="이메일을 입력해 주세요.">
+<!--                    <label for="userId"></label>-->
+                </div>
+                <div class="form-floating mb-1" id="inputPassword">
+                    <input type="password" class="form-control rounded-4" id="userPassword" placeholder="비밀번호를 입력해 주세요.">
+<!--                    <label for="userPassword"></label>-->
+                </div>
+                <hr class="my-4">
+                <link rel="stylesheet" href="">
+<!--                <div class="forgotPassword">-->
+<!--                    &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--                    <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">-->
+<!--                        아이디 찾기-->
+<!--                    </a>-->
+<!--                </div>-->
+                <button id="loginButton" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit" onclick="function login() {
+                //    로그인 로직
+                let result = true;
+                // let result = false;
+                if(result){
+                //로그인 성공
+                    window.location.href='/';
+                } else {
+                    //로그인 실패
+                alert('잘못된 정보입니다.');
+                }
+
+                }
+                login()">
+                    로그인하기
+                </button>
+            </div>
+
+            <!-- sns 연동 본인 인증 -->
+            <div class="sns-info">
+                계정 연동하기
+                <div class="sns">
+
+                    <a th:href="@{/oauth2/authorization/google}" data-text="google"><i class="xi-google"></i></a>
+                    <a th:href="@{/oauth2/authorization/naver}" data-text="naver"><i class="xi-naver"></i></a>
+                    <a th:href="@{/oauth2/authorization/kakao}" data-text="kakaotalk"><i class="xi-kakaotalk"></i></a>
+                </div>
+                <a th:href="@{/signupForm}">연동없이 회원가입</a>
+                <br>
+                <a th:href="@{/adminLogin}">관리자 로그인</a>
+
+            </div>
+
+        </section>
+    </div>
+
+    <!-- 예약하기 -->
+    <div sec:authorize="isAuthenticated()" class="init reserve">
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/brests}">레스토랑 <span>예약하기</span></a>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">레스토랑 예약 <span>조회/취소</span></a>
+        <a th:href="@{/admin/brest/add}" sec:authorize="hasRole('ROLE_ADMIN')">레스토랑<span>등록</span></a>
+        <a th:href="@{/admin/brest/list}" sec:authorize="hasRole('ROLE_ADMIN')">레스토랑<span>목록</span></a>
+
+    </div>
+</div>
+</body>
+</html>

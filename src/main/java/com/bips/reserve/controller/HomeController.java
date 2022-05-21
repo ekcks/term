@@ -43,4 +43,9 @@ public class HomeController {
         return "admin/brestRegister";
     }
 
+    @GetMapping("/userLogin")
+    public String userLogin() {
+        return "user/login/userLoginForm";
+    }
+
 }
