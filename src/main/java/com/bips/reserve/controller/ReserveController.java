@@ -146,6 +146,6 @@ public class ReserveController {
     public String cancel(@PathVariable Long reserveItemId) {
         reserveItemService.cancelReserveItem(reserveItemId);
 
-        return "redirect:/";
+        return "redirect:/reserve";
     }
 }
