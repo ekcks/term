@@ -23,9 +23,8 @@ public interface ReserveItemService {
 
     Long reserve(String username, Long brestId, String btableName, Long dateId, Long timeId);
 
-    ReserveItemSimpleDto getReserveResult(String username);
+    List<ReserveItemSimpleDto> getReserveResult(String username);
 
-    void validateDuplicateUser(String username);
 
     void cancelReserveItem(Long reserveItemId);
 }

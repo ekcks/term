@@ -115,33 +115,18 @@ public class ReserveItemServiceImpl implements ReserveItemService{
      * 예약서 조회
      */
     @Override
-    public ReserveItemSimpleDto getReserveResult(String username) {
+    public List<ReserveItemSimpleDto> getReserveResult(String username) {
         log.info("getReserveResult username = {}", username);
         User user = userRepository.findByEmail(username).orElseThrow(
                 () -> {
                     throw new IllegalArgumentException("존재하지 않는 사용자입니다.");
                 }
         );
-        return reserveItemRepository.findByUserId(user.getId()).orElseGet(
-                () -> { return new ReserveItemSimpleDto(); });
+        List<ReserveItemSimpleDto> reserveItemByUserId = reserveItemRepository.findByUserId(user.getId());
+        return reserveItemByUserId;
     }
 
-    /**
-     * 이미 예약한 회원인지 확인.
-     */
-    @Override
-    public void validateDuplicateUser(String username){
-        User user = userRepository.findByEmail(username).orElseThrow(
-                () -> {
-                    throw new IllegalArgumentException("존재하지 않는 사용자입니다.");
-                }
-        );
-        Optional<ReserveItemSimpleDto> reserveItemByUserId = reserveItemRepository.findByUserId(user.getId());
-        if(!reserveItemByUserId.isEmpty()){
-            throw new IllegalStateException("이미 예약한 회원 입니다.");
-        }
 
-    }
 
     /**
      * 예약취소
