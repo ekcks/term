@@ -2,15 +2,15 @@
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
 @font-face {
-   font-family: 'MaruBuri-Regular';
-   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+   font-family: 'Gothic A1';
+   src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
    font-weight: normal;
       font-style: normal;
 }
 
 @font-face {
-    font-family: 'SLEIGothicTTF';
-   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+    font-family: 'Gothic A1';
+   src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
    font-weight: normal;
    font-style: normal;
 }
@@ -175,10 +175,7 @@ header .logout a:last-child {
     font-weight: 600;
     color: orange;
 }
-.reserve a:nth-child(3) span {
-    font-weight: 600;
-    color: crimson;
-}
+
 
 .reserve a:hover {
     transform: scale(1.05);
