@@ -35,7 +35,6 @@ public class ReserveController {
             @RequestParam(name = "limit", defaultValue = "10") int limit, Model model,
             @AuthenticationPrincipal PrincipalDetails user) {
 
-        reserveItemService.validateDuplicateUser(user.getUsername());
         List<BrestListDto> brestListDtos = reserveItemService.getAllBrestInfo(offset, limit);
         model.addAttribute("brestList", brestListDtos);
         return "user/reserve/brestList";
@@ -135,10 +134,7 @@ public class ReserveController {
         String username = principal.getUsername();
         log.info("username = {}", username);
 
-        ReserveItemSimpleDto reserveResult = reserveItemService.getReserveResult(username);
-        if (reserveResult.getBrestName() == null) {
-            return "redirect:/";
-        }
+        List <ReserveItemSimpleDto> reserveResult = reserveItemService.getReserveResult(username);
         model.addAttribute("reserveResult", reserveResult);
         return "user/reserve/ReserveResult";
     }
