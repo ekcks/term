@@ -11,27 +11,49 @@
     <script th:src="@{https://code.jquery.com/jquery-1.12.4.js}"></script>
     <script th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.js}"></script>
 
-    <script>
-        $.datepicker.setDefaults({
-            dateFormat: 'yy-mm-dd',
-            prevText: '이전 달',
-            nextText: '다음 달',
-            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-            showMonthAfterYear: true,
-            yearSuffix: '년'
-        });
-    </script>
 
     <script>
-        $(function () {
-            $("#datepicker1, #datepicker2").datepicker({
-                dateFormat: 'yy.mm.dd'
-            });
+    $( function() {
+      var dateFormat = "yy/mm/dd",
+      datepicker1 = $( "#datepicker1" )
+          .datepicker({
+            showMonthAfterYear: true, //연도,달 순서로 지정
+            changeMonth: true,//달 변경 지정
+            dateFormat:"yy/mm/dd",//날짜 포맷
+            dayNamesMin: ["일", "월", "화", "수", "목", "금", "토" ],//요일 이름 지정
+            monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],//월 이름 지정
+            minDate:0 //현 날짜 이전을 선택할 수 없음
+          })
+          .on( "change", function() {
+            datepicker1.datepicker( "option", "minDate", getDate(this) );//종료일의 minDate 지정
+          }),
+          datepicker2= $( "#datepicker2" ).datepicker({
+       showMonthAfterYear: true,
+          changeMonth: true,
+          dateFormat:"yy/mm/dd",
+          dayNamesMin: ["일", "월", "화", "수", "목", "금", "토" ],
+          monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+          minDate:'+1D' //내일부터 선택가능
+        })
+        .on( "change", function() {
+            datepicker2.datepicker( "option", "maxDate", getDate(this) );//시작일의 maxDate 지정
         });
+
+      function getDate(element) {
+        var date;
+        try {
+          date = $.datepicker.parseDate( dateFormat, element.value );
+          if(element.id == 'datepicker1'){
+          date.setDate(date.getDate()+1);//종료일이 시작일부돠 하루 뒤 날짜
+          }else{
+           date.setDate(date.getDate()-1);//시작일이 종료일보다 하루 앞선 날짜
+          }
+        } catch( error ) {
+          date = null;
+        }
+        return date;
+      }
+    } );
     </script>
     <style>
         .field-error{
@@ -159,7 +181,7 @@
         $('input.timepicker').timepicker({
             timeFormat: 'HH:mm',
             interval: 60,
-            startTime: '13:00',
+            startTime: '00:00',
             dynamic: false,
             dropdown: true,
             scrollbar: true
