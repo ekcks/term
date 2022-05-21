@@ -15,23 +15,14 @@
 
 </header>
 <div class="frame">
-    <!-- 로그인 -->
+    <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
-        <h1>로그인</h1>
-        <div>
-            <a th:href="@{/userLogin}">로그인하기</a>
-        </div>
+        <h1>본인인증</h1>
 
-        <!-- 계정연동없이 회원가입 -->
-        <div class="signUp">
-            <a th:href="@{/signup}">계정연동없이 회원가입하기</a>
-        </div>
-
-        <!-- sns 연동 본인 인증 -->
+        <!-- sns 연동 -->
         <div class="sns-info">
             계정 연동하기
             <div class="sns">
-
                 <a th:href="@{/oauth2/authorization/google}" data-text="google"><i class="xi-google"></i></a>
                 <a th:href="@{/oauth2/authorization/naver}" data-text="naver"><i class="xi-naver"></i></a>
                 <a th:href="@{/oauth2/authorization/kakao}" data-text="kakaotalk"><i class="xi-kakaotalk"></i></a>

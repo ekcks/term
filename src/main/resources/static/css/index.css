@@ -1,22 +1,26 @@
 /* XEION CDN */
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
-@font-face {
-    font-family: 'MaruBuri-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+/*@font-face {*/
+/*    font-family: 'MaruBuri-Regular';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
 
-@font-face {
-    font-family: 'SLEIGothicTTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+/*@font-face {*/
+/*    font-family: 'SLEIGothicTTF';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/** {*/
+/*    font-family: 'SLEIGothicTTF';*/
+/*}*/
 
 * {
-    font-family: 'SLEIGothicTTF';
+    font-weight: bold;
 }
 
 body {
@@ -181,3 +185,4 @@ header .logout a:last-child {
 .reserve a:hover {
     transform: scale(1.05);
 }
+

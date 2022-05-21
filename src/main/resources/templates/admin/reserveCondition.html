@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<header th:replace="~{fragment/header :: bar}">
+<!--<header th:replace="~{fragment/header :: bar}">-->
 
 </header>
 
@@ -37,7 +37,7 @@
         <td th:text="${reserveItemCondition.getReserveStatus().name()}"></td>
     </tr>
     <tr th:unless="${reserveItemConditions!=null}">
-        <td colspan="6"> 조회된 예약 없음</td>
+        <td colspan="6"> 조회된 예약이 없습니다.</td>
     </tr>
 
 

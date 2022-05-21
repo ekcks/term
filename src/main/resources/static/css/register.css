@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
 
 @font-face {
-    font-family: 'SLEIGothicTTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+    font-family: 'Gothic A1';
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
     font-weight: normal;
     font-style: normal;
 }
 
 /* basic */
 *{
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Gothic A1', sans-serif;
     box-sizing: border-box;
     outline: none;
 }
