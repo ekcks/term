@@ -88,7 +88,7 @@ public class AdminController {
     }
 
     /**
-     * 레스톨랑 목록
+     * 레스토랑 목록
      */
     @GetMapping("/brest/list")
     public String brestList(@AuthenticationPrincipal PrincipalDetails principal, Model model,

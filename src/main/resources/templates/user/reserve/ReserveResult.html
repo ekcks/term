@@ -10,15 +10,23 @@
     <link rel="stylesheet" th:href="@{/css/reserveState.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+    <style>
+        body {
+            display: block;
+        }
 
+        #side_left {float: left; width: 300px; line-height: 600px; height: 600px}
+    </style>
 </head>
 <body>
 <header th:replace="~{fragment/header :: bar}">
 
 </header>
+<div id="side_left"></div>
 <div class="frame">
+    <table class="reserve-info"><caption>예약조회</caption></table>
     <table class="reserve-info">
-        <caption>예약조회</caption>
+
         <thead>
         <tr>
             <th>레스토랑명</th>
@@ -30,7 +38,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr style="cursor:pointer;">
+        <tr th:each="reserveResult : ${reserveResult}" style="cursor:pointer;" th:if="${reserveResult!=null}">
             <td th:text="${reserveResult.brestName}"></td>
             <td th:text="${reserveResult.btableName}"></td>
             <td th:text="${reserveResult.reserveDate}"></td>
