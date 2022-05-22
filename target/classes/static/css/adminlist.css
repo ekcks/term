@@ -41,13 +41,13 @@ header .logout a:last-child {
     margin-top:10px;
 }
 .brest-List caption:not(.search) {
-    font-family: 'Gothic A1';
+    font-family: 'SLEIGothicTTF';
     font-size: 30px;
     margin-bottom: 30px;
 }
 /* Search */
 caption.search{
-    font-family: 'Gothic A1';
+    font-family: 'SLEIGothicTTF';
     margin-bottom: 15px;
 }
 caption.search input{
