@@ -33,6 +33,20 @@ public class HomeController {
         return "user/login/loginForm";
     }
 
+    @RequestMapping("/bipsLocation")
+    public String location(){
+        return "fragment/bipsLocation";
+    }
+
+    @RequestMapping("/bipsMenu")
+    public String bipsMenu(){
+        return "fragment/bipsMenu";
+    }
+
+    @RequestMapping("/bipsReserveNote")
+    public String reserveNote(){
+        return "fragment/bipsReserveNote";
+    }
     @GetMapping("/test/asd")
     public String asdqwd() {
         return "user/signup/signupForm";
