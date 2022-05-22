@@ -26,24 +26,12 @@
     <h1 class="hS">회원가입</h1>
 
     <form th:action th:object="${userAddFormDto}" method="post">
-        <div class="info">
-            <label for="email"><b>이메일</b></label>
-            <input type="email" th:field="*{email}" id="email" >
-<!--            th:readonly="${userAddFormDto.email!=null}"-->
-            <div class="field-error" th:errors="*{detailAddress}"></div>
-        </div>
-
-<!--        <div class="info">-->
-<!--            <label for="detailAddress"><b>상세주소</b></label>-->
-<!--            <input type="text" th:field="*{detailAddress}" id="detailAddress" >-->
-<!--            <div class="field-error" th:errors="*{detailAddress}">-->
-<!--            </div>-->
-<!--        </div>-->
-
+        <input type="email" th:field="*{email}" id="email" >
+        <!--            th:readonly="${userAddFormDto.email!=null}"-->
+        <div class="field-error" th:errors="*{detailAddress}"></div>
         <div class="info">
             <label for="name"><b>이름</b></label>
             <input type="text" th:field="*{name}" id="name" >
-<!--            th:readonly="${userAddFormDto.name!=null}"-->
         </div>
         <input type="hidden" th:field="*{password}" th:if="${userAddFormDto.password!=null}">
 
