@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    include: oauth
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        #show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000
+  datasource:
+    url: jdbc:mysql://localhost:3306/bips?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: sksms331
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+  session:
+    store-type: jdbc
+    # spring.session.jdbc.initialize-schema: always 설정이 있어야만
+    # JPA 가 자동으로 세션 저장용 테이블을 생성한다.
+    jdbc:
+      initialize-schema: always
+
+  messages:
+    basename:
+      - messages
+      - errors
+
+
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+#        type:
+#          descriptor:
+#            sql: trace

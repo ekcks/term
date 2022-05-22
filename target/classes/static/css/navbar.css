@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* nav */
+header {
+    background-color: #eee;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /*position:fixed;*/
+    width: 100%;
+    top:0;
+}
+header .logout a {
+    display: inline-block;
+    font-family: 'Gothic A1';
+    margin-left: 15px;
+}
+header .logout a:hover {
+    text-decoration: underline;
+}

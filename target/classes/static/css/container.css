@@ -1,0 +1,26 @@
+.wrap {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+}
+.container text-center my-4 {
+    display :flex;
+    width: 900px;
+    height: 550px;
+    //width: 500px;
+    //height: 330px;
+    background-color: grey;
+    border-radius: 10px;
+    padding: 50px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    text-align: center;
+    /* display: inline-block; */
+    margin: 50px;
+    }
+

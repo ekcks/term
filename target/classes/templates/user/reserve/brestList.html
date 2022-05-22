@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>래스토랑 목록</title>
+
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+    <style>
+        body {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header th:replace="~{fragment/header :: bar}">
+
+    </header>
+
+    <main>
+        <table class="brest-List">
+
+            <caption>레스토랑 목록</caption>
+
+            <caption class="search">
+                <div>
+                    <form method="get" th:action="@{/reserve/search}">
+                        <label for="addressSearch">주소검색 </label>
+                        <input type="text" id="addressSearch" name="addressSearch">
+                        <button type="submit">검색</button>
+                    </form>
+
+                    <button th:onclick="|location.href='@{/reserve/brests}'|">
+                        전체보기
+                    </button>
+                </div>
+            </caption>
+
+
+            <tr>
+                <th>레스토랑 이름</th>
+                <th>주소</th>
+                <th>잔여 테이블 수량</th>
+            </tr>
+
+            <tr th:if="${brestList.size() > 0}" th:each="brest : ${brestList}" style="cursor:pointer;"
+                th:onclick="|location.href='@{/reserve/{brestId}/dates (brestId=${brest.id})}'|">
+
+                <td th:text="${brest.brestName}">바른 레스토랑</td>
+                <td th:text="${brest.address}">서울 강서구</td>
+                <td th:text="${brest.qty}">100</td>
+            </tr>
+
+            <tr th:unless="${brestList.size() > 0}">
+                <td colspan="3"> 결과 없음</td>
+            </tr>
+
+        </table>
+    </main>
+
+
+</body>
+</html>

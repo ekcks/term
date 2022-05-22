@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>래스토랑 목록</title>
+
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+</head>
+
+<body>
+<!--<header th:replace="~{fragment/header :: bar}">-->
+
+</header>
+
+
+<table class="brest-List" >
+    <caption>예약 현황</caption>
+    <tr>
+        <th>레스토랑명</th>
+        <th>예약자명</th>
+        <th>테이블명</th>
+        <th>예약 일자</th>
+        <th>예약 시간</th>
+        <th>예약 상태</th>
+    </tr>
+
+    <tr th:each="reserveItemCondition : ${reserveItemConditions}" style="cursor:pointer;" th:if="${reserveItemConditions!=null}">
+        <td th:text="${reserveItemCondition.brestName}"></td>
+        <td th:text="${reserveItemCondition.username}"></td>
+        <td th:text="${reserveItemCondition.btableName}"></td>
+        <td th:text="${reserveItemCondition.reserveDate}"></td>
+        <td th:text="|${reserveItemCondition.reserveTime}시|"></td>
+        <td th:text="${reserveItemCondition.getReserveStatus().name()}"></td>
+    </tr>
+    <tr th:unless="${reserveItemConditions!=null}">
+        <td colspan="6"> 조회된 예약이 없습니다.</td>
+    </tr>
+
+
+</table>
+</body>
+</html>

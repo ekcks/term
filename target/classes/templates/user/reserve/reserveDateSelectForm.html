@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>reserveDate</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../5/litera/bootstrap.css">
+    <link rel="stylesheet" href="../_vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../_vendor/prismjs/themes/prism-okaidia.css">
+    <link rel="stylesheet" href="../_assets/css/custom.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23019901-1"></script>
+    <script id="_carbonads_projs" type="text/javascript" src="https://srv.carbonads.net/ads/CKYIE23N.json?segment=placement:bootswatchcom&amp;callback=_carbonads_go"></script>
+
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/container.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+</head>
+</head>
+<body>
+<header th:replace="~{fragment/header :: bar}">
+</header>
+<div class="wrap">
+    <div class="container text-center my-4">
+        <h1>예약가능날짜 선택</h1>
+        <form method="GET" th:action="@{/reserve/{param1}/times(param1=${brestId})}" class="form-control">
+            <div class="form-group">
+                <select id="date" name="date" class="form-select">
+                    <option value="">====== 날짜를 선택하세요 ======</option>
+                    <option th:each="d : ${dates}" th:value="${d.id}" th:text="${d.date}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mx-2">선택</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
