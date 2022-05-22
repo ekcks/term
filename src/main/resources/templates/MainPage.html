@@ -84,7 +84,8 @@
                     <img src="https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg?size=626&ext=jpg&ga=GA1.2.1449299337.1619136000" class="img-fluid" alt="...">
                     <h1 class="display-5 fw-bold">레스토랑 예약하기</h1>
                     <p class="col-md-8 fs-4">테이블을 예약하시면 원하시는 뷰를 선택하실 수 있습니다.</p>
-                    <button class="btn btn-primary btn-lg" type="button">예약하기</button>
+                    <button class="btn btn-primary btn-lg" type="button" th:onclick="|location.href='@{/userLogin}'|"
+                    >로그인 후 예약하기</button>
                 </div>
             </div>
         </div>
