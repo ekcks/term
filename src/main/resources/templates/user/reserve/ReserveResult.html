@@ -14,15 +14,19 @@
         body {
             display: block;
         }
+
+        #side_left {float: left; width: 300px; line-height: 600px; height: 600px}
     </style>
 </head>
 <body>
 <header th:replace="~{fragment/header :: bar}">
 
 </header>
+<div id="side_left"></div>
 <div class="frame">
+    <table class="reserve-info"><caption>예약조회</caption></table>
     <table class="reserve-info">
-        <caption>예약조회</caption>
+
         <thead>
         <tr>
             <th>레스토랑명</th>

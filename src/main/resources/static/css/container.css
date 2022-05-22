@@ -1,3 +1,10 @@
+body {
+    font-size: 15px;
+    color:#222;
+    line-height: 1.6em;
+    margin:0;
+    height: 100vh;
+}
 .wrap {
     position: absolute;
     top:50%;
@@ -9,11 +16,11 @@
     /* width: 100%; */
 }
 .container text-center my-4 {
-    display :flex;
+    display :inline-block;
     width: 900px;
     height: 550px;
-    //width: 500px;
-    //height: 330px;
+//width: 500px;
+//height: 330px;
     background-color: grey;
     border-radius: 10px;
     padding: 50px;
@@ -22,5 +29,4 @@
     text-align: center;
     /* display: inline-block; */
     margin: 50px;
-    }
-
+}

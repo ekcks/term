@@ -17,55 +17,66 @@
         body {
             display: block;
         }
+
+        .list {
+            margin: auto;
+            display: inline-block;
+        }
+        #side_left {float: left; width: 300px; line-height: 600px; height: 600px}
+        /*#contents {float: left; width: 800px; line-height: 600px; height: 600px}*/
+        /*#side_right {float: left; width: 100px; line-height: 600px; height: 600px}*/
     </style>
 </head>
 
 <body>
-    <header th:replace="~{fragment/header :: bar}">
+
+    <header th:replace="~{fragment/header :: bar}" id="header">
 
     </header>
+<div id="side_left"></div>
+    <main id="contents">
+        <div class="list">
+            <table class="brest-List">
+                <caption>레스토랑 목록</caption>
 
-    <main>
-        <table class="brest-List">
+                <caption class="search">
+                    <div>
+                        <form method="get" th:action="@{/reserve/search}">
+                            <label for="addressSearch">주소검색 </label>
+                            <input type="text" id="addressSearch" name="addressSearch">
+                            <button type="submit">검색</button>
+                        </form>
 
-            <caption>레스토랑 목록</caption>
+                        <button th:onclick="|location.href='@{/reserve/brests}'|">
+                            전체보기
+                        </button>
+                    </div>
+                </caption>
+            </table>
+            <table class="brest-List">
 
-            <caption class="search">
-                <div>
-                    <form method="get" th:action="@{/reserve/search}">
-                        <label for="addressSearch">주소검색 </label>
-                        <input type="text" id="addressSearch" name="addressSearch">
-                        <button type="submit">검색</button>
-                    </form>
+                <tr>
+                    <th>레스토랑 이름</th>
+                    <th>주소</th>
+                    <th>잔여 테이블 수량</th>
+                </tr>
 
-                    <button th:onclick="|location.href='@{/reserve/brests}'|">
-                        전체보기
-                    </button>
-                </div>
-            </caption>
+                <tr th:if="${brestList.size() > 0}" th:each="brest : ${brestList}" style="cursor:pointer;"
+                    th:onclick="|location.href='@{/reserve/{brestId}/dates (brestId=${brest.id})}'|">
 
+                    <td th:text="${brest.brestName}">바른 레스토랑</td>
+                    <td th:text="${brest.address}">서울 강서구</td>
+                    <td th:text="${brest.qty}">100</td>
+                </tr>
 
-            <tr>
-                <th>레스토랑 이름</th>
-                <th>주소</th>
-                <th>잔여 테이블 수량</th>
-            </tr>
+                <tr th:unless="${brestList.size() > 0}">
+                    <td colspan="3"> 결과 없음</td>
+                </tr>
 
-            <tr th:if="${brestList.size() > 0}" th:each="brest : ${brestList}" style="cursor:pointer;"
-                th:onclick="|location.href='@{/reserve/{brestId}/dates (brestId=${brest.id})}'|">
-
-                <td th:text="${brest.brestName}">바른 레스토랑</td>
-                <td th:text="${brest.address}">서울 강서구</td>
-                <td th:text="${brest.qty}">100</td>
-            </tr>
-
-            <tr th:unless="${brestList.size() > 0}">
-                <td colspan="3"> 결과 없음</td>
-            </tr>
-
-        </table>
+            </table>
+        </div>
     </main>
-
+    <div id="side_right"></div>
 
 </body>
 </html>
