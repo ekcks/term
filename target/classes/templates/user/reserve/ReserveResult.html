@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약정보</title>
+
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/reserveState.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+    <style>
+        body {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragment/header :: bar}">
+
+</header>
+<div class="frame">
+    <table class="reserve-info">
+        <caption>예약조회</caption>
+        <thead>
+        <tr>
+            <th>레스토랑명</th>
+            <th>테이블명</th>
+            <th>예약일자</th>
+            <th>예약시간</th>
+            <th>예약상태</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reserveResult : ${reserveResult}" style="cursor:pointer;" th:if="${reserveResult!=null}">
+            <td th:text="${reserveResult.brestName}"></td>
+            <td th:text="${reserveResult.btableName}"></td>
+            <td th:text="${reserveResult.reserveDate}"></td>
+            <td th:text="|${reserveResult.reserveTime}시|"></td>
+            <td th:text="${reserveResult.getReserveStatus().name()}"></td>
+            <td class="btn">
+                <button th:onclick="|location.href='@{/reserve/{reserveItemId}/cancel (reserveItemId=${reserveResult.reserveItemId})}'|">
+                    예약취소
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
