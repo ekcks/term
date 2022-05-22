@@ -17,6 +17,7 @@ body{
     justify-content: center;
     align-items:center;
     font-size: 15px;
+    flex-wrap: wrap;
 }
 a{
     text-decoration: none;

@@ -49,7 +49,7 @@ public class AdminController {
     }
 
     /**
-     * 현재 어드민이 관리하는 병원 목록 조회 (병원이름, 주소만 조회)
+     *
      */
     @ResponseBody
     @GetMapping("/brests")
