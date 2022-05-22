@@ -27,6 +27,9 @@ public class UserAddFormDto {
     @NotEmpty(message = "이름을 입력해 주세요")
     private String name;
 
+    @NotEmpty(message = "아이디를 입력해 주세요")
+    private String userId;
+
     @NotEmpty(message = "성별을 체크해 주세요")
     private String gender;
 
