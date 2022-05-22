@@ -20,7 +20,7 @@
 
 * {
     font-family: 'Gothic A1', sans-serif;
-    font-family: 'Jua', sans-serif;
+    font-family: 'Gothic A1', sans-serif;
 }
 
 @font-face {
@@ -96,7 +96,7 @@ header .logout a:last-child {
     margin: 15px 0;
 }
 .sns-info b {
-    font-family: 'MaruBuri-Regular';
+    font-family: 'Gothic A1';
 }
 
 .sns-info .sns {
@@ -179,6 +179,8 @@ header .logout a:last-child {
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    justify-content: center;
+    align-item: center;
 }
 
 .reserve a:nth-child(1) span {
