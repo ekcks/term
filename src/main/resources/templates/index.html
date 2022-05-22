@@ -17,8 +17,9 @@
 <div class="frame">
     <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
-        <h1>본인인증</h1>
-
+<!--        <alert>로그인이 필요한 기능입니다.</alert>-->
+        <h4>로그인 후 이용해 주세요.</h4>
+        <br>
         <!-- sns 연동 -->
         <div class="sns-info">
             계정 연동하기
@@ -27,9 +28,10 @@
                 <a th:href="@{/oauth2/authorization/naver}" data-text="naver"><i class="xi-naver"></i></a>
                 <a th:href="@{/oauth2/authorization/kakao}" data-text="kakaotalk"><i class="xi-kakaotalk"></i></a>
             </div>
-            <a th:href="@{/signupForm}">연동없이 회원가입</a>
             <br>
-            <a th:href="@{/adminLogin}">로그인</a>
+            <a th:href="@{/signupForm}">연동없이 회원가입하기</a>
+            <br>
+            <a th:href="@{/adminLogin}">연동잆이 로그인하기</a>
 
         </div>
     </div>
@@ -40,8 +42,9 @@
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">레스토랑 예약 <span>조회/취소</span></a>
         <a th:href="@{/admin/brest/add}" sec:authorize="hasRole('ROLE_ADMIN')">레스토랑<span>등록</span></a>
         <a th:href="@{/admin/brest/list}" sec:authorize="hasRole('ROLE_ADMIN')">레스토랑<span>목록</span></a>
-
     </div>
 </div>
 </body>
 </html>
+
+
