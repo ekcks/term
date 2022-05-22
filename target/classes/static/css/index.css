@@ -1,40 +1,45 @@
 /* XEION CDN */
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
+/*@font-face {*/
+/*    font-family: 'MaruBuri-Regular';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'SLEIGothicTTF';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/** {*/
+/*    font-family: 'SLEIGothicTTF';*/
+/*}*/
+
+/** {*/
+/*    font-weight: bold;*/
+/*}*/
+
 @font-face {
-   font-family: 'Gothic A1';
-   src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
-   font-weight: normal;
-      font-style: normal;
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Gothic A1';
-   src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
-   font-weight: normal;
-   font-style: normal;
-}
- {
-    font-family: 'Gothic A1';
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
 }
 
 * {
     font-family: 'Gothic A1', sans-serif;
     font-family: 'Jua', sans-serif;
-}
-
-@font-face {
-    font-family: 'Gothic A1', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Gothic A1', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
-    font-weight: normal;
-    font-style: normal;
 }
 
 body {
@@ -72,8 +77,8 @@ header .logout a:last-child {
     /* width: 100%; */
 }
 .init {
-    width: 800px;
-    height: 550px;
+    width: 400px;
+    height: 330px;
     background-color: #fff;
     border-radius: 10px;
     padding: 50px;
@@ -168,16 +173,17 @@ header .logout a:last-child {
 
 /* 예약하기 */
 .reserve {
-    background-image: grey;
+    background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
 }
 .reserve a {
     display: inline-block;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 24px;
     text-align: center;
     padding: 15px 0;
     margin: 10px;
     border-radius: 10px;
+    background-color:#fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
@@ -190,7 +196,10 @@ header .logout a:last-child {
     font-weight: 600;
     color: orange;
 }
-
+.reserve a:nth-child(3) span {
+    font-weight: 600;
+    color: crimson;
+}
 
 .reserve a:hover {
     transform: scale(1.05);
