@@ -19,7 +19,22 @@
 }
 
 * {
-    font-weight: bold;
+    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Jua', sans-serif;
+}
+
+@font-face {
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gothic A1', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {

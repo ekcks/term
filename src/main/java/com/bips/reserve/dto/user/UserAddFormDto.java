@@ -19,24 +19,24 @@ import com.bips.reserve.domain.value.Gender;
 @Data
 public class UserAddFormDto {
 
-    @NotNull(message = "이메일을 입력 해 주세요")
+    @NotNull(message = "이메일을 입력해 주세요")
     private String email;
 
     private String password;
 
-    @NotEmpty(message = "이름을 입력 해 주세요")
+    @NotEmpty(message = "이름을 입력해 주세요")
     private String name;
 
-    @NotEmpty(message = "성별을 체크 해 주세요")
+    @NotEmpty(message = "성별을 체크해 주세요")
     private String gender;
 
-    @NotNull(message = "나이를 입력 해 주세요")
+    @NotNull(message = "나이를 입력해 주세요")
     private Integer age;
 
-    @NotEmpty(message = "주소를 입력 해 주세요")
+    @NotEmpty(message = "주소를 입력해 주세요")
     private String address;
 
-    @NotEmpty(message = "상세 주소를 입력 해 주세요")
+    @NotEmpty(message = "상세 주소를 입력해 주세요")
     private String detailAddress;
 
 }

@@ -1,13 +1,17 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdminLoginPage</title>
+    <title>로그인</title>
 
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+
     <style>
         .field-error {
             color: #dc3545;
@@ -20,28 +24,42 @@
 
 </header>
 <div class="register">
-    <h1 class="hR">Admin Login</h1>
+    <h1 class="hR">로그인</h1>
 
     <form th:action="@{/login}" method="post">
         <div class="info">
-            <label for="username" th:text="${'username'}"></label>
-            <input id="username" name="username" placeholder="username을 입력 해 주세요.">
+            <label for="username" th:text="${''}"></label>
+            <input id="username" name="username" placeholder="이름을 입력해 주세요.">
             <div th:if="${errorMsg!=null}">
                 <p th:text="${errorMsg}" class="field-error"></p>
             </div>
 
         </div>
         <div class="info">
-            <label for="password" th:text="${'password'}"></label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력 해 주세요.">
+            <!--            <label for="password" th:text="${'password'}"></label>-->
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요.">
             <div th:if="${errorMsg!=null}">
                 <p th:text="${errorMsg}" class="field-error"></p>
             </div>
 
         </div>
-        <input type="submit" value="Login">
-        <input type="button" th:onclick="|location.href='@{/}'|" value="취소">
+        <input type="submit" value="로그인하기">
+        <br>
+        <!--        <input type="button" th:onclick="|location.href='@{/userLogin}'|" value="취소">-->
     </form>
+
+    <!-- sns 연동 본인 인증 -->
+    <div class="sns-info">
+        계정 연동하기
+        <div class="sns">
+
+            <a th:href="@{/oauth2/authorization/google}" data-text="google"><i class="xi-google"></i></a>
+            <a th:href="@{/oauth2/authorization/naver}" data-text="naver"><i class="xi-naver"></i></a>
+            <a th:href="@{/oauth2/authorization/kakao}" data-text="kakaotalk"><i class="xi-kakaotalk"></i></a>
+        </div>
+        <br>
+        <a th:href="@{/signupForm}">연동없이 회원가입</a>
+    </div>
 </div>
 
 </body>
