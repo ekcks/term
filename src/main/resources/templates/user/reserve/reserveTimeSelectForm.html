@@ -20,8 +20,8 @@
 <div class="wrap">
     <div class="container text-center my-4">
         <h1 class="my-4">예약가능시간 선택</h1>
-
-        <form method="GET" th:action="@{/reserve/{param1}/btable(param1=${brestId})}" class="form-control">
+        <br>
+        <form method="GET" th:action="@{/reserve/{param1}/btable(param1=${brestId})}" class="form-control" >
             <input type="hidden" th:value="${date}" name="date" id="date">
 
             <div class="form-check form-check-inline">

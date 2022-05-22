@@ -2,25 +2,25 @@
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
 @font-face {
-   font-family: 'Gothic A1';
-   src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
-   font-weight: normal;
-      font-style: normal;
+    font-family: 'Gothic A1';
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'Gothic A1';
-   src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
-   font-weight: normal;
-   font-style: normal;
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
 }
- {
+{
     font-family: 'Gothic A1';
 }
 
 * {
     font-family: 'Gothic A1', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Jua', sans-serif;
 }
 
 @font-face {
@@ -96,7 +96,7 @@ header .logout a:last-child {
     margin: 15px 0;
 }
 .sns-info b {
-    font-family: 'Gothic A1';
+    font-family: ''Gothic A1'';
 }
 
 .sns-info .sns {
@@ -168,7 +168,9 @@ header .logout a:last-child {
 
 /* 예약하기 */
 .reserve {
-    background-image: grey;
+
+    justify-content: center;
+    align-items: center;
 }
 .reserve a {
     display: inline-block;
@@ -179,8 +181,7 @@ header .logout a:last-child {
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    justify-content: center;
-    align-item: center;
+    background-color: white;
 }
 
 .reserve a:nth-child(1) span {
@@ -197,4 +198,3 @@ header .logout a:last-child {
 .reserve a:hover {
     transform: scale(1.05);
 }
-

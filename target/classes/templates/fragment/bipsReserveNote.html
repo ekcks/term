@@ -8,85 +8,85 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
         .goupbtn{
-         top: 90%;
-         left: 95%;
-         width: 50px;
-         height: 50px;
-         border-radius: 80%;\
-         background-color: #ffffff;
-         border: grey 3px solid;
-         position: fixed; z-index: 2;
-         }
-         #wrap{
-         width:1000px;
-         height: 900px;
-         margin: 0 auto;
-         text-align: center;
-         }
-         .content{
+            top: 90%;
+            left: 95%;
+            width: 50px;
+            height: 50px;
+            border-radius: 80%;\
+        background-color: #ffffff;
+            border: grey 3px solid;
+            position: fixed; z-index: 2;
+        }
+        #wrap{
+            width:1000px;
+            height: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content{
             float:left;
             width: 300px;
             line-heightL 600px;
             height:600px;
-         }
-         #resev_con{
-         margin: 0 auto;
-         }
-         .alert alert-primary d-flex align-items-center{
-         margin: 20px;
-         position: center;
-         }
-         span{
-         background-color:white;
-         }
+        }
+        #resev_con{
+            margin: 0 auto;
+        }
+        .alert alert-primary d-flex align-items-center{
+            margin: 20px;
+            position: center;
+        }
+        span{
+            background-color:white;
+        }
     </style>
 </head>
 <body>
 <header th:replace="~{fragment/header :: bar}">
 </header>
 <div id="wrap">
-<div id="content">
-    <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <div id="content">
+        <br><h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
         <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </svg>예약 유의사항</h3>
-<div class="alert alert-primary d-flex align-items-center" role="alert">
+        <div class="alert alert-primary d-flex align-items-center" role="alert">
 
-    <div id="resev_con">
-        <h4>**테이블 구성**</h4>
-        <p style="color:grey">각 테이블의 숫자는 최대 수용인원을 의미하며, 예약자는 자신의 인원에 맞는 테이블을 선택합니다.</p>
-        <table>
-            <ul style="color:black">
-                <li>seat <span>2</span>: 최대 수용인원 <span>2</span>인</li>
-                <li>seat <span>4</span>: 최대 수용인원 <span>4</span>인</li>
-                <li>seat <span>6</span>: 최대 수용인원 <span>6</span>인</li>
-                <li>seat <span>8</span>: 최대 수용인원 <span>8</span>인</li>
-            </ul>
-        </table>
-        <br>
-        <div>
-        <h4>**예약 날짜 및 시간 선택**</h4>
-        <p style="color:grey">예약 날짜 및 시간은 레스토랑 권한설정이나 예약마감으로 인해 예약불가될 수 있습니다.</p>
-        <p style="color:grey">레스토랑 이용시간은 예약시간으로부터 <span>1시간</span> 입니다.</p>
-    </div>
-        <br>
-        <div>
-        <h4>**예약 수정**</h4>
-        <p style="color:grey">예약 수정은 원활한 예약 시스템 운영을 위해 해당 예약을 취소한 후 예약을 다시 진행해야 합니다.</p>
-        <table>
-            <ol style="color:black">
-                <li>BIPS의 홈페이지에 접속합니다.</li>
-                <li>상단의 로그인을 클릭하여 로그인을 진행합니다.</li>
-                <li>로그인 후 예약 취소버튼을 클릭합니다.</li>
-                <li>예약목록의 예약건을 확인하고 예약취소버튼을 클릭합니다.</li>
-                <li>예약하기 버튼을 눌러 재예약을 진행합니다.</li>
-            </ol>
-        </table>
+            <div id="resev_con">
+                <h4>**테이블 구성**</h4>
+                <p style="color:grey">각 테이블의 숫자는 최대 수용인원을 의미하며, 예약자는 자신의 인원에 맞는 테이블을 선택합니다.</p>
+                <table>
+                    <ul style="color:black">
+                        <li>seat <span>2</span>: 최대 수용인원 <span>2</span>인</li>
+                        <li>seat <span>4</span>: 최대 수용인원 <span>4</span>인</li>
+                        <li>seat <span>6</span>: 최대 수용인원 <span>6</span>인</li>
+                        <li>seat <span>8</span>: 최대 수용인원 <span>8</span>인</li>
+                    </ul>
+                </table>
+                <br>
+                <div>
+                    <h4>**예약 날짜 및 시간 선택**</h4>
+                    <p style="color:grey">예약 날짜 및 시간은 레스토랑 권한설정이나 예약마감으로 인해 예약불가될 수 있습니다.</p>
+                    <p style="color:grey">레스토랑 이용시간은 예약시간으로부터 <span>1시간</span> 입니다.</p>
+                </div>
+                <br>
+                <div>
+                    <h4>**예약 수정**</h4>
+                    <p style="color:grey">예약 수정은 원활한 예약 시스템 운영을 위해 해당 예약을 취소한 후 예약을 다시 진행해야 합니다.</p>
+                    <table>
+                        <ol style="color:black">
+                            <li>BIPS의 홈페이지에 접속합니다.</li>
+                            <li>상단의 로그인을 클릭하여 로그인을 진행합니다.</li>
+                            <li>로그인 후 예약 취소버튼을 클릭합니다.</li>
+                            <li>예약목록의 예약건을 확인하고 예약취소버튼을 클릭합니다.</li>
+                            <li>예약하기 버튼을 눌러 재예약을 진행합니다.</li>
+                        </ol>
+                    </table>
+                </div>
+                <br>
+                <p style="color:grey">이외의 예약 문의는 매장에 직접 전화/메일로 문의주시기 바랍니다.</p>
+            </div>
         </div>
-<br>
-        <p style="color:grey">이외의 예약 문의는 매장에 직접 전화/메일로 문의주시기 바랍니다.</p>
     </div>
-</div>
-</div>
 </div>
 <!-- FOOTER -->
 <footer class="my-5 pt-5 text-muted text-center text-small">

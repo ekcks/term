@@ -6,45 +6,49 @@
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
 
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/adminlist.css}">
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/container.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
-
+    <style>
+        body {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <header th:replace="~{fragment/header :: bar}">
 </header>
 <div class="wrap">
-<div class="container text-center my-4">
-    <h1 class="my-4">테이블 선택</h1>
-    <form method="POST" th:action="@{/reserve}" class="form-control">
+    <div class="container text-center my-4">
+        <h1 class="my-4">테이블 선택</h1>
+        <br>
+        <form method="POST" th:action="@{/reserve}" class="form-control">
 
-        <input type="hidden" th:value="${date}" id="reserveDateId" name="reserveDateId">
-        <input type="hidden" th:value="${time}" id="reserveTimeId" name="reserveTimeId">
-        <input type="hidden" th:value="${brestId}" id="brestId" name="brestId">
+            <input type="hidden" th:value="${date}" id="reserveDateId" name="reserveDateId">
+            <input type="hidden" th:value="${time}" id="reserveTimeId" name="reserveTimeId">
+            <input type="hidden" th:value="${brestId}" id="brestId" name="brestId">
 
-        <div th:each="v : ${btables}" class="form-check form-check-inline">
-            <label th:for="${v.id}" th:text="${v.btableName}" class="form-check-label"></label>
-            <input type="radio"  th:value="${v.btableName}" th:id="${v.id}"  name="btableName" class="form-check-input">
+            <div th:each="v : ${btables}" class="form-check form-check-inline">
+                <label th:for="${v.id}" th:text="${v.btableName}" class="form-check-label"></label>
+                <input type="radio"  th:value="${v.btableName}" th:id="${v.id}"  name="btableName" class="form-check-input">
+            </div>
+
+            <button type="submit" class="btn btn-primary">선택</button>
+
+        </form>
+        <br>
+        <div class="alert alert-dismissible alert-warning">
+            <h4 class="alert-heading">!예약 주의사항!</h4>
+            <p class="mb-0">테이블 번호는 각 테이블의 최대수용인원임을 알려드립니다.</p>
+            <p class="mb-0">예약인원이 최대수용인원을 넘을 경우, 관리자에 의해 예약이 취소될 수 있습니다.</p>
         </div>
-        <input type="text" >
-        <button type="submit" class="btn btn-primary">선택</button>
-
-    </form>
-    <br>
-    <div class="alert alert-dismissible alert-warning">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <h4 class="alert-heading">!예약 주의사항!</h4>
-        <p class="mb-0">테이블 번호는 각 테이블의 최대수용인원임을 알려드립니다.</p>
-        <p class="mb-0">예약인원이 최대수용인원을 넘을 경우, 관리자에 의해 예약이 취소될 수 있습니다.</p>
     </div>
-</div>
 </div>
 </body>
 </html>

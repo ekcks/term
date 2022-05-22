@@ -20,7 +20,6 @@
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" th:href="@{/css/container.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
-
 </head>
 </head>
 <body>
@@ -28,17 +27,18 @@
 </header>
 <div class="wrap">
     <div class="container text-center my-4">
-        <h1>예약가능날짜 선택</h1>
-        <form method="GET" th:action="@{/reserve/{param1}/times(param1=${brestId})}" class="form-control">
-            <div class="form-group">
-                <select id="date" name="date" class="form-select">
-                    <option value="">====== 날짜를 선택하세요 ======</option>
-                    <option th:each="d : ${dates}" th:value="${d.id}" th:text="${d.date}"></option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary mx-2">선택</button>
-        </form>
-        </div>
+        <h1>예약가능날짜 선택
+            <br>
+            <form method="GET" th:action="@{/reserve/{param1}/times(param1=${brestId})}" class="form-control">
+                <div class="form-group">
+                    <select id="date" name="date" class="form-select" >
+                        <option value="">====== 날짜를 선택하세요 ======</option>
+                        <option th:each="d : ${dates}" th:value="${d.id}" th:text="${d.date}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mx-2">선택</button>
+            </form>
     </div>
+</div>
 </body>
 </html>

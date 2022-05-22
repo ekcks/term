@@ -1,32 +1,32 @@
-body {
-    font-size: 15px;
-    color:#222;
-    line-height: 1.6em;
-    margin:0;
-    height: 100vh;
+
+.container text-center my-4 {
+    width: 900px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0,0,0,0.200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top:10px;
 }
-.wrap {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    display: flex;
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+
+@font-face {
+    font-family: 'Gothic A1';
+    src: url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Jua&display=swap');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrap{
+    font-family:'Gothic A1';, sans-serif;
+    margin: 0;
+    color: #333;
+    line-height: 1.6em;
+    display:flex;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
+    font-size: 15px;
 }
-.container text-center my-4 {
-    display :inline-block;
-    width: 900px;
-    height: 550px;
-//width: 500px;
-//height: 330px;
-    background-color: grey;
-    border-radius: 10px;
-    padding: 50px;
-    box-sizing: border-box;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    text-align: center;
-    /* display: inline-block; */
-    margin: 50px;
-}
+

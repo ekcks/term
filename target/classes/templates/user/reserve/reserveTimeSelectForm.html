@@ -8,38 +8,38 @@
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" th:href="@{/css/container.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
-
 </head>
 </head>
 <body>
 <header th:replace="~{fragment/header :: bar}">
 </header>
 <div class="wrap">
-<div class="container text-center my-4">
-    <h1 class="my-4">예약가능시간 선택</h1>
+    <div class="container text-center my-4">
+        <h1 class="my-4">예약가능시간 선택</h1>
+        <br>
+        <form method="GET" th:action="@{/reserve/{param1}/btable(param1=${brestId})}" class="form-control" >
+            <input type="hidden" th:value="${date}" name="date" id="date">
 
-    <form method="GET" th:action="@{/reserve/{param1}/btable(param1=${brestId})}" class="form-control">
-        <input type="hidden" th:value="${date}" name="date" id="date">
-
-        <div class="form-check form-check-inline">
-            <select id="time" name="time" class="form-select">
-                <option value="">====== 시간를 선택하세요 ======</option>
-                <option th:each="t : ${times}" th:value="${t.id}" th:text="${t.time}+' : 00'"></option>
-            </select>
+            <div class="form-check form-check-inline">
+                <select id="time" name="time" class="form-select">
+                    <option value="">====== 시간를 선택하세요 ======</option>
+                    <option th:each="t : ${times}" th:value="${t.id}" th:text="${t.time}+' : 00'"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mx-2">선택</button>
+        </form>
+        <br>
+        <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <h4 class="alert-heading">!예약 주의사항!</h4>
+            <p class="mb-0">레스토랑 이용시간은 예약시간으로부터 1시간 입니다.</p>
+            <p class="mb-0">이용 시간을 연장하거나 당일 이용을 원하시면 매장문의바랍니다.</p>
         </div>
-        <button type="submit" class="btn btn-primary mx-2">선택</button>
-    </form>
-    <br>
-    <div class="alert alert-dismissible alert-warning">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <h4 class="alert-heading">!예약 주의사항!</h4>
-        <p class="mb-0">식당 이용시간은 예약시간으로부터 1시간 입니다.</p>
-        <p class="mb-0">이용 시간을 연장하거나 당일 이용을 원하시면 매장문의바랍니다.</p>
     </div>
-</div>
 </div>
 </div>
 </body>
